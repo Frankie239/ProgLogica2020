@@ -14,14 +14,28 @@ namespace TestIntegrador
         
         public void ProductoMasCaro_returns_ProdConMayorPrecio()
         {
-            Inventario inventario = new Inventario();
-            
             //Arrange:
+            Inventario inventario = new Inventario();
+            Producto MasCaro = new Producto
+            {
+                Nombre = "Pinza",
+                IdProducto = 9,
+                Categoria = "Herramientas",
+                Precio = 135.00,
+                StockActual = 80,
+                Vendidos = 25
+
+            };
+
+
             //Act:
+            Producto Encontrado = InventarioController.ProductoMasCaro();
+
             //Assert:
-            
-           
-            
+            Assert.AreEqual(MasCaro.Nombre, Encontrado.Nombre);
+
+
+
         }
     }
 }
