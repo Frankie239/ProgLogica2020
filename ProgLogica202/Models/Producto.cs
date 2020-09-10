@@ -8,18 +8,12 @@ namespace Models
     {
         public string Nombre;
         public int IdProducto;
-        
+        public string Categoria;
         public double Precio;
         public int StockActual;
         public int Vendidos;
         double Facturacion { get { throw new NotImplementedException(); } }
-        public enum Categoria
-        {
-            Electricidad,
-            Construccion,
-            Plomeria,
-            Herramientas
-        };
+       
 
     }
 }
