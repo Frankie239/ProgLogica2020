@@ -4,9 +4,26 @@ using System.Text;
 
 namespace Models
 {
-    class Inventario
+    
+    public class Inventario
     {
+        
         const int MaxProductos = 12;
-        Producto[] Productos = new Producto[MaxProductos];
+        public Producto[] Productos =
+        {
+            new Producto
+            {
+              Nombre = "Ladrillo",
+              IdProducto = 12,
+              
+
+
+            },
+            new Producto
+            {
+
+            }
+        };
+
     }
 }

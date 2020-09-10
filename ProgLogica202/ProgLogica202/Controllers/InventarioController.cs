@@ -5,33 +5,33 @@ using System.Text;
 
 namespace ProgLogica202.Controllers
 {
-   public  class InventarioController
+   public static class InventarioController
     {
-        public List<Producto> MostrarTodos()
+        static public List<Producto> MostrarTodos()
         {
             throw new NotImplementedException();
 
         }
-        public List<Producto> MostrarSegunCategoria(string Categoria)
+        static public List<Producto> MostrarSegunCategoria(string Categoria)
         {
             throw new NotImplementedException();
         }
-        public List<Producto> MostrarSegunStock(char seleccion)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Producto ProductoMasVendido()
+        static public List<Producto> MostrarSegunStock(char seleccion)
         {
             throw new NotImplementedException();
         }
 
-        public Producto ProductoMasCaro()
+        static public Producto ProductoMasVendido()
         {
             throw new NotImplementedException();
         }
 
-        public Producto AgregarNuevoProducto(Producto aAgregar)
+        static public Producto ProductoMasCaro()
+        {
+            throw new NotImplementedException();
+        }
+
+        static  public Producto AgregarNuevoProducto(Producto aAgregar)
         {
             throw new NotImplementedException();
         }

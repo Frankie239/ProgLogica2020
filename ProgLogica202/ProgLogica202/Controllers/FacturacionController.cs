@@ -5,17 +5,17 @@ using Models;
 
 namespace ProgLogica202.Controllers
 {
-    class FacturacionController
+    public static class FacturacionController
     {
-        public Producto ProductoQueMasFacturo()
+        static public Producto ProductoQueMasFacturo()
         {
             throw new NotImplementedException();
         }
-        public List<Producto> ProductosPorFacturacion()
+        static public List<Producto> ProductosPorFacturacion()
         {
             throw new NotImplementedException();
         }
-        public int MostrarFacturacionTotal()
+        static  public int MostrarFacturacionTotal()
         {
             throw new NotImplementedException();
         }

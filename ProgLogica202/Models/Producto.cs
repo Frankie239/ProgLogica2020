@@ -6,12 +6,20 @@ namespace Models
 {
     public class Producto
     {
-        string Nombre;
-        int IdProducto;
-        string Categoria;
-        double Precio;
-        int StockActual;
-        int Vendidos;
+        public string Nombre;
+        public int IdProducto;
+        
+        public double Precio;
+        public int StockActual;
+        public int Vendidos;
         double Facturacion { get { throw new NotImplementedException(); } }
+        public enum Categoria
+        {
+            Electricidad,
+            Construccion,
+            Plomeria,
+            Herramientas
+        };
+
     }
 }
