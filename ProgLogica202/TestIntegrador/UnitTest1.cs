@@ -38,6 +38,9 @@ namespace TestIntegrador
 
         }
 
+        /// <summary>
+        /// Verifica que el producto se modifica correctamente, en este caso mediante la categoria
+        /// </summary>
         [TestMethod]
         public void ModificarProducto_DevuelveProductoModif()
         {
@@ -46,12 +49,70 @@ namespace TestIntegrador
             {
                 Nombre = "Pinza",
                 IdProducto = 9,
-                Categoria = "Herramientas",
+                Categoria = "Plomeria",
                 Precio = 135.00,
                 StockActual = 80,
                 Vendidos = 25
 
             };
+            
+
+            //Act
+            Producto Devuelto = ProductoController.ModificarProducto("Pinza", AEditar);
+            //Assert:
+            Assert.AreEqual(AEditar.Categoria, Devuelto.Categoria);
+
+       
+
+        }
+        [TestMethod]
+        public void CalcularFacturacion_DevuelveCoef()
+        {    //Arrange
+            //varible de lo que espero que valga
+            double Esperado = 10000.00;
+                           
+            //Creo el objeto para calcular el valor de facturacion            
+            Producto ACalcular = new Producto()
+            {
+                Nombre = "Chancletas",
+                IdProducto = 3,
+                Categoria = "Plomeria",
+                Precio = 100.00,
+                StockActual = 5,
+                Vendidos = 100
+
+            };
+
+            //Act y assert:
+            //Si el calculo esta bien hecho, deberia dar 10.000 porque es 100 de precio * 100 de vendidos
+            Assert.AreEqual(Esperado, ACalcular.Facturacion);
+
+        }
+
+        /// <summary>
+        /// Este caso asegura que el producto devuelto es el que mas facturo,
+        /// o sea el que tiene el coeficiente mas alto de la propiedad facturacion 
+        /// que es una multiplicacion de los valores de precio y cantidad vendida
+        /// </summary>
+        [TestMethod]
+        public void ProductoQueMasFacturo_returnsProductoConCoefMasAlto()
+        {
+            //Arrange:
+            Inventario Inventario = new Inventario();
+            Producto Facturado = new Producto
+            {
+                Nombre = "Bolsa Arena",
+                IdProducto = 90,
+                Categoria = "Construccion",
+                Precio = 60.00,
+                StockActual = 45,
+                Vendidos = 1500
+            };
+
+            //Act
+            Producto encontrado = FacturacionController.ProductoQueMasFacturo(Inventario);
+            //Assert:
+            Assert.AreEqual(Facturado.Nombre, encontrado.Nombre);
 
         }
     }

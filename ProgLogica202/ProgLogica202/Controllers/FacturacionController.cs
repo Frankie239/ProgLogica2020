@@ -19,5 +19,10 @@ namespace ProgLogica202.Controllers
         {
             throw new NotImplementedException();
         }
+
+        public static Producto ProductoQueMasFacturo(Inventario inventario)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

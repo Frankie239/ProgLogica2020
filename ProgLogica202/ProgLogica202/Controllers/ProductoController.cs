@@ -4,13 +4,13 @@ using System.Text;
 using Models;
 namespace ProgLogica202.Controllers
 {
-    static class ProductoController
+    public static class ProductoController
     {
         public static Producto ModificarProducto(int id)
         {
             throw new NotImplementedException();
         }
-        public static Producto ModificarProducto(string nombre, Producto aModificar)
+        public static Producto ModificarProducto(string nombre,Producto aModificar)
         {
             throw new NotImplementedException();
         }

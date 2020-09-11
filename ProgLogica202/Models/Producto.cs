@@ -12,7 +12,7 @@ namespace Models
         public double Precio;
         public int StockActual;
         public int Vendidos;
-        double Facturacion { get { throw new NotImplementedException(); } }
+       public double Facturacion { get { throw new NotImplementedException(); } }
        
 
     }
