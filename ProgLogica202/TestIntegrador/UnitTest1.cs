@@ -115,5 +115,43 @@ namespace TestIntegrador
             Assert.AreEqual(Facturado.Nombre, encontrado.Nombre);
 
         }
+        /// <summary>
+        ///Este test se encarga de verificar que el producto que devuelve la función se encuentra dentro de la lista de productos
+        ///primero elimina un producto y luego agrega otro, ya que la cant. maxima es 12. Si no lo encuentra, falla
+        /// </summary>
+        [TestMethod]
+        public void AgregarProducto_returnsProductoAgregado()
+        {
+            //Arrange:
+            Inventario Inventario = new Inventario();
+
+            Producto Nuevo = new Producto
+            {
+                Nombre = "Tubo termoretractil por metro",
+                IdProducto = 140,
+                Categoria = "Electricidad",
+                Precio = 10,
+                StockActual = 300,
+                Vendidos = 400
+            };
+            //act: 
+            bool funciono = ProductoController.EliminarProducto(12);
+            if (funciono)
+            {
+               
+                Producto devuelto =  InventarioController.AgregarNuevoProducto(Nuevo);
+
+                //Assert
+                Assert.AreEqual(Nuevo, devuelto);
+
+
+            }
+            else
+                Assert.Fail();
+
+
+        }
+
+
     }
 }
