@@ -37,5 +37,22 @@ namespace TestIntegrador
 
 
         }
+
+        [TestMethod]
+        public void ModificarProducto_DevuelveProductoModif()
+        {
+            Inventario inv = new Inventario();
+            Producto AEditar = new Producto
+            {
+                Nombre = "Pinza",
+                IdProducto = 9,
+                Categoria = "Herramientas",
+                Precio = 135.00,
+                StockActual = 80,
+                Vendidos = 25
+
+            };
+
+        }
     }
 }

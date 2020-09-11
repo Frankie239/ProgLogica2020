@@ -10,7 +10,7 @@ namespace ProgLogica202.Controllers
         {
             throw new NotImplementedException();
         }
-        public static Producto ModificarProducto(string nombre)
+        public static Producto ModificarProducto(string nombre, Producto aModificar)
         {
             throw new NotImplementedException();
         }
