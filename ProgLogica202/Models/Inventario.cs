@@ -7,8 +7,8 @@ namespace Models
     
     public class Inventario
     {
-       
-       
+
+        
         const int MaxProductos = 12;
         public Producto[] Productos =
         {
@@ -114,5 +114,34 @@ namespace Models
             }
         };
 
+        static public List<Producto> MostrarTodos()
+        {
+            throw new NotImplementedException();
+
+        }
+
+        public List<Producto> MostrarSegunCategoria(string Categoria)
+        {
+            throw new NotImplementedException();
+        }
+        public List<Producto> MostrarSegunStock(char seleccion)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Producto ProductoMasVendido()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Producto ProductoMasCaro()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Producto AgregarNuevoProducto(Producto aAgregar)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

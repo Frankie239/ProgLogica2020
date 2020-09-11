@@ -12,8 +12,20 @@ namespace Models
         public double Precio;
         public int StockActual;
         public int Vendidos;
-       public double Facturacion { get { throw new NotImplementedException(); } }
-       
+       public double Facturacion { get { return Precio * Vendidos; } }
+        public Producto ModificarProducto(string nombre, Producto aModificar)
+        {
+            throw new NotImplementedException();
+        }
+        public bool EliminarProducto(int id)
+        {
+            throw new NotImplementedException();
+        }
+        public bool EliminarProducto(string nombre)
+        {
+            throw new NotImplementedException();
+        }
+
 
     }
 }
