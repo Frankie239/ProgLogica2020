@@ -112,7 +112,7 @@ namespace Models
               StockActual = 98,
               Vendidos = 30
             }
-            
+
         };
 
         public Inventario()
@@ -145,19 +145,19 @@ namespace Models
         public List<Producto> MostrarSegunStock(char seleccion)
         {
             List<Producto> Encontrados = new List<Producto>();
-           
+
             switch (seleccion)
             {
                 case 'A':
 
                     Encontrados = Buscar(0, int.MaxValue);
-                    
-                    
-                    
+
+
+
                     break;
 
                 case 'B':
-                    Encontrados = Buscar(0,100);
+                    Encontrados = Buscar(0, 100);
 
                     break;
 
@@ -178,8 +178,8 @@ namespace Models
             //Pa refactoring
             List<Producto> encontrados = Productos;
             encontrados.Sort((x, y) => x.Vendidos.CompareTo(y.Vendidos));
-            return encontrados[encontrados.Count-1];
-            
+            return encontrados[encontrados.Count - 1];
+
         }
 
         public Producto ProductoMasCaro()
@@ -189,10 +189,14 @@ namespace Models
             encontrados.Sort((x, y) => x.Precio.CompareTo(y.Precio));
             return encontrados[encontrados.Count - 1];
         }
-
+        /// <summary>
+        /// Agrega un producto si la cantidad de productos del stock es menor a la cantidad de productos maximos
+        /// </summary>
+        /// <param name="aAgregar">Producto que se quiere agregar</param>
+        /// <returns>Returna el producto que se agrego, si no se pudo, retorna null</returns>
         public Producto AgregarNuevoProducto(Producto aAgregar)
         {
-            bool pudo = true;
+            bool pudo = true; //Flag para controlar si se pudo. 
             try
             {
                 Productos.Add(aAgregar);
@@ -206,19 +210,69 @@ namespace Models
             {
                 return aAgregar;
             }
+
+            else return null;
+
         }
+        /// <summary>
+        /// Modifica un producto a traves de su nombre, modifica el producto de MENOR id
+        /// </summary>
+        /// <param name="nombre">nombre del prod a modificar</param>
+        /// <param name="aModificar">producto con la informacion a modificar</param>
+        /// <returns>El producto modificado, si no, retorna null</returns>
         public Producto ModificarProducto(string nombre, Producto aModificar)
         {
-            throw new NotImplementedException();
+            Producto encontrado = Buscar(nombre);
+
+            return SeekDestroyAndAdd(encontrado, aModificar);
         }
+        /// <summary>
+        /// Modifica un producto a traves de su id
+        /// </summary>
+        /// <param name="id">id del producto a modificar</param>
+        /// <param name="aModificar">producto con la informacion a modificar</param>
+        /// <returns>El producto modificado, si no, retorna null</returns>
+        public Producto ModificarProducto(int id, Producto aModificar)
+        {
+            Producto encontrado = Buscar(id);
+
+            return SeekDestroyAndAdd(encontrado, aModificar);
+        }
+
+        /// <summary>
+        /// Elimina un producto por su id
+        /// </summary>
+        /// <param name="id">Id del producto a eliminar</param>
+        /// <returns>Booleano True si se pudo eliminar, False si no.</returns>
         public bool EliminarProducto(int id)
         {
-            throw new NotImplementedException();
+            int countInicial = Productos.Count;
+            
+            Productos.Remove(Buscar(id));
+
+            if (countInicial - 1 == Productos.Count)
+                return true;
+
+            else return false;
         }
+        /// <summary>
+        /// Elimina un producto por su nombre, si hay dos coen el mismo, elimina el de menor id
+        /// </summary>
+        /// <param name="nombre">Nombre del producto a eliminar</param>
+        /// <returns>Booleano True si se pudo eliminar, False si no.</returns>
         public bool EliminarProducto(string nombre)
         {
-            throw new NotImplementedException();
+            int countInicial = Productos.Count;
+            Productos.Remove(Buscar(nombre));
+
+            if (countInicial - 1 == Productos.Count)
+                return true;
+
+            else return false;
+
+
         }
+
 
         /// <summary>
         /// Busca un producto segun un stock maximo y uno minimo, si quieres que sea de un stock especifico, van los dos del mismo.
@@ -241,6 +295,35 @@ namespace Models
 
         }
         /// <summary>
+        /// Busca un producto por su id
+        /// </summary>
+        /// <param name="id">el id del producto que se quiere buscar</param>
+        /// <returns>el producto encontrado, si no se ecnuentra, retorna null.</returns>
+        private Producto Buscar(int id)
+        {
+            foreach (Producto prod in Productos)
+            {
+                if (prod.IdProducto == id)
+                    return prod;
+            }
+            return null;
+        }
+        /// <summary>
+        /// Busca un producto por su nombre, si hay dos con el mismo retorna el de menor id
+        /// </summary>
+        /// <param name="nombre">Nombre del producto a buscar</param>
+        /// <returns>El producto encontrado de menor id.</returns>
+        private Producto Buscar(string nombre)
+        {
+            Productos.Sort((x, y) => x.IdProducto.CompareTo(y.IdProducto));
+            foreach(Producto prod in Productos)
+            {
+                if (prod.Nombre == nombre)
+                    return prod;
+            }
+            return null;
+        }
+        /// <summary>
         /// Ordena una lista por el campo stock de los productos
         /// </summary>
         /// <param name="prod">La Lista a Ordenar</param>
@@ -250,6 +333,18 @@ namespace Models
             prod.Sort((x, y) => x.StockActual.CompareTo(y.StockActual));
 
             return prod;
+        }
+        private Producto SeekDestroyAndAdd(Producto encontrado, Producto aModificar)
+        {
+            if (encontrado != null)
+            {
+                Productos.Remove(encontrado);
+
+                Productos.Add(aModificar);
+                return aModificar;
+            }
+            else
+                return null;
         }
     }
 }
