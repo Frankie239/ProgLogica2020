@@ -10,7 +10,7 @@ namespace Models
 
 
         const int MaxProductos = 12;
-        private Producto[] Productos =
+        public List<Producto> Productos = new List<Producto>()
         {
             new Producto
             {
@@ -112,9 +112,15 @@ namespace Models
               StockActual = 98,
               Vendidos = 30
             }
+            
         };
 
-        public Producto[] MostrarTodos()
+        public Inventario()
+        {
+            Productos.Capacity = MaxProductos;
+        }
+
+        public List<Producto> MostrarTodos()
         {
             return Productos;
 
@@ -169,17 +175,37 @@ namespace Models
 
         public Producto ProductoMasVendido()
         {
-            throw new NotImplementedException();
+            //Pa refactoring
+            List<Producto> encontrados = Productos;
+            encontrados.Sort((x, y) => x.Vendidos.CompareTo(y.Vendidos));
+            return encontrados[encontrados.Count-1];
+            
         }
 
         public Producto ProductoMasCaro()
         {
-            throw new NotImplementedException();
+            //Pa refactoring
+            List<Producto> encontrados = Productos;
+            encontrados.Sort((x, y) => x.Precio.CompareTo(y.Precio));
+            return encontrados[encontrados.Count - 1];
         }
 
         public Producto AgregarNuevoProducto(Producto aAgregar)
         {
-            throw new NotImplementedException();
+            bool pudo = true;
+            try
+            {
+                Productos.Add(aAgregar);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                pudo = false;
+                return null;
+            }
+            if (pudo)
+            {
+                return aAgregar;
+            }
         }
         public Producto ModificarProducto(string nombre, Producto aModificar)
         {
