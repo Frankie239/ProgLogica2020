@@ -1,4 +1,5 @@
 ﻿using System;
+using Models;
 
 namespace ProgLogica202
 {
@@ -9,6 +10,8 @@ namespace ProgLogica202
     {
         static void Main(string[] args)
         {
+            Inventario inv = new Inventario();
+            inv.MostrarSegunStock('A');
            
         }
     }

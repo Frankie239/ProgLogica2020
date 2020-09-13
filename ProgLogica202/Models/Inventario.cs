@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Models
 {
-    
+
     public class Inventario
     {
 
-        
+
         const int MaxProductos = 12;
-        public Producto[] Productos =
+        private Producto[] Productos =
         {
             new Producto
             {
@@ -19,7 +19,7 @@ namespace Models
               Categoria = "Construccion",
               Precio =80.00,
               StockActual = 120,
-              Vendidos = 50           
+              Vendidos = 50
 
 
             },
@@ -114,19 +114,57 @@ namespace Models
             }
         };
 
-        static public List<Producto> MostrarTodos()
+        public Producto[] MostrarTodos()
         {
-            throw new NotImplementedException();
+            return Productos;
 
         }
 
         public List<Producto> MostrarSegunCategoria(string Categoria)
         {
-            throw new NotImplementedException();
+            List<Producto> productos = new List<Producto>();
+            foreach (Producto prod in Productos)
+            {
+                if (prod.Categoria == Categoria)
+                {
+                    productos.Add(prod);
+
+                }
+
+
+            }
+
+            return productos;
         }
         public List<Producto> MostrarSegunStock(char seleccion)
         {
-            throw new NotImplementedException();
+            List<Producto> Encontrados = new List<Producto>();
+           
+            switch (seleccion)
+            {
+                case 'A':
+
+                    Encontrados = Buscar(0, int.MaxValue);
+                    
+                    
+                    
+                    break;
+
+                case 'B':
+                    Encontrados = Buscar(0,100);
+
+                    break;
+
+                case 'C':
+                    Encontrados = Buscar(100, int.MaxValue);
+                    break;
+
+                default:
+
+                    break;
+            }
+            SortByStock(Encontrados);
+            return Encontrados;
         }
 
         public Producto ProductoMasVendido()
@@ -142,6 +180,50 @@ namespace Models
         public Producto AgregarNuevoProducto(Producto aAgregar)
         {
             throw new NotImplementedException();
+        }
+        public Producto ModificarProducto(string nombre, Producto aModificar)
+        {
+            throw new NotImplementedException();
+        }
+        public bool EliminarProducto(int id)
+        {
+            throw new NotImplementedException();
+        }
+        public bool EliminarProducto(string nombre)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Busca un producto segun un stock maximo y uno minimo, si quieres que sea de un stock especifico, van los dos del mismo.
+        /// </summary>
+        /// <param name="stockMin">Stock minimo a buscar</param>
+        /// <param name="StockMax">Stock Maximo a buscar</param>
+        /// <returns>Una lista de productos en el rango del stock</returns>
+        private List<Producto> Buscar(int stockMin, int StockMax)
+        {
+            List<Producto> encontrados = new List<Producto>();
+            foreach (Producto prod in this.Productos)
+            {
+                if (prod.StockActual >= stockMin && prod.StockActual <= StockMax)
+                    encontrados.Add(prod);
+
+            }
+
+            return encontrados;
+
+
+        }
+        /// <summary>
+        /// Ordena una lista por el campo stock de los productos
+        /// </summary>
+        /// <param name="prod">La Lista a Ordenar</param>
+        /// <returns>La lista ordenada por el parametro stock</returns>
+        private List<Producto> SortByStock(List<Producto> prod) 
+        {
+            prod.Sort((x, y) => x.StockActual.CompareTo(y.StockActual));
+
+            return prod;
         }
     }
 }

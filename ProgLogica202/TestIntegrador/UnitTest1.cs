@@ -29,7 +29,7 @@ namespace TestIntegrador
 
 
             //Act:
-            Producto Encontrado = InventarioController.ProductoMasCaro();
+            Producto Encontrado = inventario.ProductoMasCaro();
 
             //Assert:
             Assert.AreEqual(MasCaro.Nombre, Encontrado.Nombre);
@@ -58,7 +58,7 @@ namespace TestIntegrador
             
 
             //Act
-            Producto Devuelto = ProductoController.ModificarProducto("Pinza", AEditar);
+            Producto Devuelto = inv.ModificarProducto("Pinza", AEditar);
             //Assert:
             Assert.AreEqual(AEditar.Categoria, Devuelto.Categoria);
 
@@ -110,7 +110,7 @@ namespace TestIntegrador
             };
 
             //Act
-            Producto encontrado = FacturacionController.ProductoQueMasFacturo(Inventario);
+            Producto encontrado = Facturacion.ProductoQueMasFacturo(Inventario);
             //Assert:
             Assert.AreEqual(Facturado.Nombre, encontrado.Nombre);
 
@@ -135,11 +135,11 @@ namespace TestIntegrador
                 Vendidos = 400
             };
             //act: 
-            bool funciono = ProductoController.EliminarProducto(12);
+            bool funciono = Inventario.EliminarProducto(12);
             if (funciono)
             {
                
-                Producto devuelto =  InventarioController.AgregarNuevoProducto(Nuevo);
+                Producto devuelto =  Inventario.AgregarNuevoProducto(Nuevo);
 
                 //Assert
                 Assert.AreEqual(Nuevo, devuelto);

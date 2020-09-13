@@ -6,12 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Facturacion\" />
-    <Folder Include="Views\Inventario\" />
-    <Folder Include="Views\Producto\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 
