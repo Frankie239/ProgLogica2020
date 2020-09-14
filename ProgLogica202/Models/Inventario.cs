@@ -337,7 +337,7 @@ namespace Models
         }
 
         /// <summary>
-        /// Busca un producto, lo elimina y lo agrega nuevamente, esto es para haer un update de un producto especifico
+        /// Busca un producto, lo elimina y lo agrega nuevamente, esto es para haer un update de un producto especificoo
         /// </summary>
         /// <param name="encontrado">El producto al que se haga el update</param>
         /// <param name="aModificar">El producto que trae las modificaciones</param>
