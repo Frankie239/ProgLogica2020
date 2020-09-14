@@ -35,7 +35,7 @@ namespace ProgLogica202
                         List<Producto> encontrados = new List<Producto>();
                         devueltos =  inv.MostrarSegunCategoria(cat);
 
-                        DesserializarEnMasa(encontrados);
+                        DesserializarEnMasa(devueltos);
 
                         break;
                     case "13":
@@ -45,6 +45,8 @@ namespace ProgLogica202
                             "C Stock mayor a 100");
                         char elegido = char.Parse(Console.ReadLine());
                         devueltos = inv.MostrarSegunStock(elegido);
+
+                        DesserializarEnMasa(devueltos);
 
 
                         break;
@@ -58,18 +60,28 @@ namespace ProgLogica202
                     case "21":
                         Console.WriteLine("Ingrese el nombre del producto a buscar");
                         string aBuscar = Console.ReadLine();
+
                         encontrado = inv.Buscar(aBuscar);
+
                         Deserializar(encontrado);
                         break;
+                      
+                       
+                        
+                                                                  
 
                     case "22":
                         Console.WriteLine("Ingrese el id del producto a buscar");
                         int id = 0;
                         Int32.TryParse(Console.ReadLine(), out id);
                         encontrado = inv.Buscar(id);
-                        Deserializar(encontrado);
-
+                        if (encontrado != null)
+                        {
+                            Deserializar(encontrado);
+                        }
+                        else Console.WriteLine("El producto que buscas no existe");
                         break;
+                        
                     case "3":
                         encontrado = Serializar();
 
@@ -80,6 +92,7 @@ namespace ProgLogica202
                         }
                         else Console.WriteLine("El inventario esta lleno, por favor, elimine un producto y vuelva a intentar");
                         break;
+
                     case "4":
                         encontrado = Serializar();
 
@@ -95,8 +108,8 @@ namespace ProgLogica202
                         {
                             inv.ModificarProducto(Select, encontrado);
                         }
-                        
                         break;
+                        
                     case "5":
 
                         Console.WriteLine("Ingrese un id o un nombre del producto a eliminar");
@@ -106,8 +119,14 @@ namespace ProgLogica202
                         if (int.TryParse(Select, out id))
                         {
                             encontrado = inv.Buscar(id);
-                            Console.WriteLine("¿Esta seguro que desea eliminar este producto? Y/N");
                             Deserializar(encontrado);
+                            Console.WriteLine("¿Esta seguro que desea eliminar este producto? Y/N");
+                          
+                            
+
+                           
+                           
+                            
                             Select = Console.ReadLine();
                             if (Select == "Y")
                             {
@@ -185,7 +204,7 @@ namespace ProgLogica202
                         break;
 
                     case "2":
-                        Console.WriteLine("1 Mostrar todos\n2 Mostrar segun stock\n");
+                        Console.WriteLine("1 Buscar segun nombre\n2 Buscar segun id\n");
                         presionada += Console.ReadLine();
                         break;
 
@@ -226,17 +245,35 @@ namespace ProgLogica202
 
                 return serializado;
             }
+            //Des serializa un producto y lo muestra en la consola
             static  void Deserializar(Producto prod)
             {
-                Console.WriteLine("Producto:" + prod.Nombre + " Precio" + prod.Precio);
+                if (prod != null)
+                {
+                    Console.WriteLine("Producto:");
+                    Console.WriteLine("Nombre: " + prod.Nombre);
+                    Console.WriteLine("Categoria: " + prod.Categoria);
+                    Console.WriteLine("Id: " + prod.IdProducto);
+                    Console.WriteLine("Precio $" + prod.Precio);
+                    Console.WriteLine("Stock: " + prod.StockActual);
+                    Console.WriteLine("Vendidos: " + prod.Vendidos);
+                    Console.WriteLine("Facturacion: $" + prod.Facturacion);
+                }
+                else Console.WriteLine("El producto no existe");
+              
             }
 
+            //Deserializa todos los productos
             static void DesserializarEnMasa(List<Producto> devueltos)
             {
-                Console.WriteLine("Nombre:  Id:   Categoria:   Precio:   Stock:   Vendidos:   ");
+                Console.WriteLine("Nombre:  Id:   Categoria:   Precio:   Stock:   Vendidos:   Facturacion:  ");
+                Console.WriteLine();
                 foreach (Producto prod in devueltos)
                 {
-                    Console.Write(prod.Nombre + "   " + prod.IdProducto + "   " + prod.Categoria + "   " + prod.Precio + "   " + prod.StockActual + "   " + prod.StockActual + "   \n");
+                    Console.Write(prod.Nombre + "   " + prod.IdProducto + "   " + prod.Categoria + "   " + prod.Precio + "   " + prod.StockActual + "   " + prod.StockActual + "   "+prod.Facturacion+"   \n");
+                    //Si te gusta verlo como una lista de productos descomentar esto y comentar lo de arriba
+                    //Deserializar(prod);
+                    Console.WriteLine();
 
                 }
                 Console.WriteLine();
