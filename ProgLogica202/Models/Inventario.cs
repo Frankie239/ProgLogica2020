@@ -214,6 +214,7 @@ namespace Models
             else return null;
 
         }
+
         /// <summary>
         /// Modifica un producto a traves de su nombre, modifica el producto de MENOR id
         /// </summary>
@@ -334,6 +335,13 @@ namespace Models
 
             return prod;
         }
+
+        /// <summary>
+        /// Busca un producto, lo elimina y lo agrega nuevamente, esto es para haer un update de un producto especifico
+        /// </summary>
+        /// <param name="encontrado">El producto al que se haga el update</param>
+        /// <param name="aModificar">El producto que trae las modificaciones</param>
+        /// <returns>El producto actualizado</returns>
         private Producto SeekDestroyAndAdd(Producto encontrado, Producto aModificar)
         {
             if (encontrado != null)
