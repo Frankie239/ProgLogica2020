@@ -280,7 +280,7 @@ namespace Models
         /// <param name="stockMin">Stock minimo a buscar</param>
         /// <param name="StockMax">Stock Maximo a buscar</param>
         /// <returns>Una lista de productos en el rango del stock</returns>
-        private List<Producto> Buscar(int stockMin, int StockMax)
+        public List<Producto> Buscar(int stockMin, int StockMax)
         {
             List<Producto> encontrados = new List<Producto>();
             foreach (Producto prod in this.Productos)
@@ -299,7 +299,7 @@ namespace Models
         /// </summary>
         /// <param name="id">el id del producto que se quiere buscar</param>
         /// <returns>el producto encontrado, si no se ecnuentra, retorna null.</returns>
-        private Producto Buscar(int id)
+        public Producto Buscar(int id)
         {
             foreach (Producto prod in Productos)
             {
@@ -313,7 +313,7 @@ namespace Models
         /// </summary>
         /// <param name="nombre">Nombre del producto a buscar</param>
         /// <returns>El producto encontrado de menor id.</returns>
-        private Producto Buscar(string nombre)
+        public Producto Buscar(string nombre)
         {
             Productos.Sort((x, y) => x.IdProducto.CompareTo(y.IdProducto));
             foreach(Producto prod in Productos)

@@ -19,7 +19,12 @@ namespace Models
 
             return ListFacturacion[index - 1];
        }
-
+        
+        /// <summary>
+        /// devuelve los productos en orden de facturacion, del que mas facturo al que menos
+        /// </summary>
+        /// <param name="inventario">inventario al cual se quiere ordenar por facturacion</param>
+        /// <returns>una lista con el inventario ordenado por su cantidad de facturacion</returns>
        public static List<Producto> ProductosPorFacturacion(Inventario inventario)
        {
             List<Producto> Ordenados  = new List<Producto>();
@@ -27,6 +32,12 @@ namespace Models
             Ordenados.Sort((x, y) => x.Facturacion.CompareTo(y.Facturacion));
             return Ordenados;
        }
+
+        /// <summary>
+        /// Devuelve un double de la cantidad total de facturacion.
+        /// </summary>
+        /// <param name="inventario">Inventario en el cual se quiere calcular la facturacion total</param>
+        /// <returns>El coef. de facturacion de toda la lista</returns>
 
         public static double  MostrarFacturacionTotal(Inventario inventario)
         {
