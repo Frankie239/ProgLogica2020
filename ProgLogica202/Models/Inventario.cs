@@ -142,6 +142,12 @@ namespace Models
 
             return productos;
         }
+
+        /// <summary>
+        /// Ordena y devuelve los productos por su cantidad de stock
+        /// </summary>
+        /// <param name="seleccion"></param>
+        /// <returns></returns>
         public List<Producto> MostrarSegunStock(char seleccion)
         {
             List<Producto> Encontrados = new List<Producto>();
