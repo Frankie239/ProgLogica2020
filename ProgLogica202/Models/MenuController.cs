@@ -6,6 +6,7 @@ namespace Models
 {
     public static class MenuController
     {
+        
         public static string MenuPrincipal()
         {
             string presionada = "0";
@@ -36,12 +37,20 @@ namespace Models
             return presionada;
         }
 
-        public static void Inicializar()
+        public static void Inicializar(Inventario inv)
         {
-           //seleccion = MenuPrincipal();
+            string seleccion = "0";
+
+            while(seleccion != "7")
+            {
+                seleccion = MenuPrincipal();
+                MenuSecundario(inv, seleccion);
+            }
+            
+
         }
 
-        public  static Producto Serializar()
+        public static Producto Serializar()
         {
             Producto serializado = new Producto();
             Console.WriteLine("Ingrese nombre del producto");
@@ -97,6 +106,171 @@ namespace Models
             }
             Console.WriteLine();
             Console.ReadKey();
+        }
+
+        public static void MenuSecundario(Inventario inv, string seleccion)
+        {
+           
+
+                
+            switch (seleccion)
+            {
+                case "11":
+
+                        
+                    MenuController.DesserializarEnMasa(inv.MostrarTodos());
+                    break;
+
+                case "12":
+                    Console.WriteLine("Ingrese categoria: ");
+                    string cat = Console.ReadLine();
+                        
+
+                    MenuController.DesserializarEnMasa(inv.MostrarSegunCategoria(cat));
+
+                    break;
+                case "13":
+                    Console.WriteLine("Categoria de stock: \n" +
+                        "A sin stock\n" +
+                        "B Stock menor a 100\n" +
+                        "C Stock mayor a 100");
+                    char elegido = char.Parse(Console.ReadLine());
+                        MenuController.DesserializarEnMasa(inv.MostrarSegunStock(elegido));
+
+
+                    break;
+                case "14":
+                       
+
+                    MenuController.Deserializar(inv.ProductoMasVendido());
+
+                    break;
+
+                case "21":
+                    Console.WriteLine("Ingrese el nombre del producto a buscar");
+                    string aBuscar = Console.ReadLine();
+                                           
+
+                    MenuController.Deserializar(inv.Buscar(aBuscar));
+                    break;
+
+
+
+
+
+                case "22":
+                    Console.WriteLine("Ingrese el id del producto a buscar");
+                    int id = 0;
+                    Int32.TryParse(Console.ReadLine(), out id);
+                    Producto producto = inv.Buscar(id);
+                    Deserializar(producto);
+                    break;
+
+                case "3":
+                    producto = MenuController.Serializar();
+
+                    if (inv.AgregarNuevoProducto(producto) != null)
+                    {
+                        Console.WriteLine("Producto agregado satisfactoriamente");
+
+                    }
+                    else Console.WriteLine("El inventario esta lleno, por favor, elimine un producto y vuelva a intentar");
+                    break;
+
+                case "4":
+                    producto = MenuController.Serializar();
+
+                    Console.WriteLine("Ingrese un id o un nombre del producto a modificar");
+                    string Select = Console.ReadLine();
+
+                    if (int.TryParse(Select, out id))
+                    {
+                        inv.ModificarProducto(id, producto);
+
+                    }
+                    else
+                    {
+                        inv.ModificarProducto(Select, producto);
+                    }
+                    break;
+
+                case "5":
+
+                    Console.WriteLine("Ingrese un id o un nombre del producto a eliminar");
+
+                    Select = Console.ReadLine();
+
+                    if (int.TryParse(Select, out id))
+                    {
+                            
+                        MenuController.Deserializar(inv.Buscar(id));
+                        Console.WriteLine("¿Esta seguro que desea eliminar este producto? Y/N");
+
+
+
+
+
+
+                        Select = Console.ReadLine();
+                        if (Select == "Y")
+                        {
+                            inv.EliminarProducto(id);
+                        }
+                        else break;
+
+
+                    }
+                    else
+                    {
+                            
+                        Console.WriteLine("¿Esta seguro que desea eliminar este producto? Y/N");
+                        Deserializar(inv.Buscar(Select));
+                        Select = Console.ReadLine();
+                        if (Select == "Y")
+                        {
+                            inv.EliminarProducto(Select);
+                        }
+                        else break;
+                    }
+                    break;
+
+                case "61":
+                        
+                    MenuController.Deserializar(Facturacion.ProductoQueMasFacturo(inv));
+                    break;
+
+                case "62":
+                        
+                    MenuController.DesserializarEnMasa(Facturacion.ProductosPorFacturacion(inv));
+                    break;
+
+                case "63":
+                    double fact = Facturacion.MostrarFacturacionTotal(inv);
+                    List<Producto> encontrados = Facturacion.ProductosPorFacturacion(inv);
+                    Producto encontrado = Facturacion.ProductoQueMasFacturo(inv);
+
+                    Console.WriteLine("Facturacion total: " + fact);
+
+                    Console.Write("Productos por facturacion");
+                    MenuController.DesserializarEnMasa(encontrados);
+                    Console.WriteLine();
+
+                    Console.Write("Producto que mas facturo");
+                    MenuController.Deserializar(encontrado);
+                    break;
+
+                case "7":
+                    Console.Write("Esta seguro que desea salir? Y/N");
+                    Select = Console.ReadLine();
+                    if (Select == "Y")
+                        Environment.Exit(0);
+
+                    break;
+
+
+            }
+
+            
         }
 
 
