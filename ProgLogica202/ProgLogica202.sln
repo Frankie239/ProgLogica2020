@@ -4,16 +4,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgLogica202", "ProgLogica202\ProgLogica202.csproj", "{7C4221CD-6817-441D-BFA1-B6B1B17B0757}"
-	ProjectSection(ProjectDependencies) = postProject
-		{656F97D8-DF6E-4095-B491-07D3E13EE8BD} = {656F97D8-DF6E-4095-B491-07D3E13EE8BD}
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models2", "Models\Models2.csproj", "{656F97D8-DF6E-4095-B491-07D3E13EE8BD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestIntegrador", "TestIntegrador\TestIntegrador.csproj", "{C00DFA3B-A5DE-4A3D-98F3-5A335D1379A0}"
-	ProjectSection(ProjectDependencies) = postProject
-		{656F97D8-DF6E-4095-B491-07D3E13EE8BD} = {656F97D8-DF6E-4095-B491-07D3E13EE8BD}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models1\Models.csproj", "{E115BD97-24C3-4F44-B65C-B82F877FB6C6}"
 EndProject
@@ -27,10 +19,6 @@ Global
 		{7C4221CD-6817-441D-BFA1-B6B1B17B0757}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C4221CD-6817-441D-BFA1-B6B1B17B0757}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C4221CD-6817-441D-BFA1-B6B1B17B0757}.Release|Any CPU.Build.0 = Release|Any CPU
-		{656F97D8-DF6E-4095-B491-07D3E13EE8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{656F97D8-DF6E-4095-B491-07D3E13EE8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{656F97D8-DF6E-4095-B491-07D3E13EE8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{656F97D8-DF6E-4095-B491-07D3E13EE8BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C00DFA3B-A5DE-4A3D-98F3-5A335D1379A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C00DFA3B-A5DE-4A3D-98F3-5A335D1379A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C00DFA3B-A5DE-4A3D-98F3-5A335D1379A0}.Release|Any CPU.ActiveCfg = Release|Any CPU

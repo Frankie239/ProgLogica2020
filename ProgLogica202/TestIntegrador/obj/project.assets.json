@@ -1644,16 +1644,6 @@
           "bin/placeholder/Models.dll": {}
         }
       },
-      "Models2/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/Models2.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Models2.dll": {}
-        }
-      },
       "ProgLogica202/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -5743,11 +5733,6 @@
       "path": "../Models1/Models.csproj",
       "msbuildProject": "../Models1/Models.csproj"
     },
-    "Models2/1.0.0": {
-      "type": "project",
-      "path": "../Models/Models2.csproj",
-      "msbuildProject": "../Models/Models2.csproj"
-    },
     "ProgLogica202/1.0.0": {
       "type": "project",
       "path": "../ProgLogica202/ProgLogica202.csproj",
@@ -5760,7 +5745,6 @@
       "MSTest.TestFramework >= 2.1.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
       "Models >= 1.0.0",
-      "Models2 >= 1.0.0",
       "ProgLogica202 >= 1.0.0",
       "coverlet.collector >= 1.2.0"
     ]
@@ -5798,9 +5782,6 @@
           "projectReferences": {
             "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models1\\Models.csproj": {
               "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models1\\Models.csproj"
-            },
-            "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models2.csproj": {
-              "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models2.csproj"
             },
             "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\ProgLogica202\\ProgLogica202.csproj": {
               "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\ProgLogica202\\ProgLogica202.csproj"

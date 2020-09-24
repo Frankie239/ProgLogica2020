@@ -157,7 +157,7 @@ namespace Models
             {
                 case 'A':
 
-                    Encontrados = Buscar(0, int.MaxValue);
+                    Encontrados = Buscar(0, 0);
 
 
 

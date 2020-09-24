@@ -79,30 +79,50 @@ namespace Models
         {
             if (prod != null)
             {
-                Console.WriteLine("Producto:");
-                Console.WriteLine("Nombre: " + prod.Nombre);
-                Console.WriteLine("Categoria: " + prod.Categoria);
-                Console.WriteLine("Id: " + prod.IdProducto);
-                Console.WriteLine("Precio $" + prod.Precio);
-                Console.WriteLine("Stock: " + prod.StockActual);
-                Console.WriteLine("Vendidos: " + prod.Vendidos);
-                Console.WriteLine("Facturacion: $" + prod.Facturacion);
+                StringBuilder mySb = new StringBuilder();
+                mySb.Append("|");
+                mySb.Append(string.Format("{0, -18}  | ",prod.Nombre));
+                mySb.Append(string.Format("{0, -14}  | ", prod.Categoria));
+                mySb.Append(string.Format("{0, -6}  | ", prod.IdProducto));
+                mySb.Append(string.Format("{0, -6}  | ", prod.Precio));
+                mySb.Append(string.Format("{0, -6}  | ", prod.StockActual));
+                mySb.Append(string.Format("{0, -6}  | ", prod.Vendidos));
+                mySb.AppendLine(string.Format("${0, -6}  | ", prod.Facturacion));
+
+                Console.Write(mySb.ToString());
             }
             else Console.WriteLine("El producto no existe");
 
         }
+        private static void Headers()
+        {
+
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black; 
+            StringBuilder mySb = new StringBuilder();
+            mySb.Append(string.Format("{0, -19}  | ", "Nombre: "));
+            mySb.Append(string.Format("{0, -14}  | ", "Categoria: "));
+            mySb.Append(string.Format("{0, -6}  | ", "Id: "));
+            mySb.Append(string.Format("{0, -4}| ", "Precio: "));
+            mySb.Append(string.Format("{0, -4} | ", "Stock: "));
+            mySb.Append(string.Format("{0, -4}  | ", "Vend: "));
+            mySb.Append(string.Format("{0, -4}   | ", "Fact: "));
+
+            Console.WriteLine(mySb.ToString());
+
+            Console.BackgroundColor = ConsoleColor.Black;
+           
+            Console.ForegroundColor = ConsoleColor.White;
+        }
 
         private static void DesserializarEnMasa(List<Producto> devueltos)
         {
-            Console.WriteLine("Nombre:  Id:   Categoria:   Precio:   Stock:   Vendidos:   Facturacion:  ");
-            Console.WriteLine();
+
+            Headers();
+            
             foreach (Producto prod in devueltos)
             {
-                Console.Write(prod.Nombre + "   " + prod.IdProducto + "   " + prod.Categoria + "   " + prod.Precio + "   " + prod.StockActual + "   " + prod.StockActual + "   " + prod.Facturacion + "   \n");
-                //Si te gusta verlo como una lista de productos descomentar esto y comentar lo de arriba
-                //Deserializar(prod);
-                Console.WriteLine();
-
+                Deserializar(prod);
             }
             Console.WriteLine();
             Console.ReadKey();
