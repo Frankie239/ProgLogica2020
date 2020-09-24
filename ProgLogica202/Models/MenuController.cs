@@ -7,7 +7,7 @@ namespace Models
     public static class MenuController
     {
         
-        public static string MenuPrincipal()
+        private static string MenuPrincipal()
         {
             string presionada = "0";
             Console.Write("1 Mostrar productos  2 Buscar producto  3 Agregar nuevo producto\n" +
@@ -50,7 +50,7 @@ namespace Models
 
         }
 
-        public static Producto Serializar()
+        private static Producto Serializar()
         {
             Producto serializado = new Producto();
             Console.WriteLine("Ingrese nombre del producto");
@@ -75,7 +75,7 @@ namespace Models
             return serializado;
         }
 
-        public static void Deserializar(Producto prod)
+        private static void Deserializar(Producto prod)
         {
             if (prod != null)
             {
@@ -92,7 +92,7 @@ namespace Models
 
         }
 
-        public static void DesserializarEnMasa(List<Producto> devueltos)
+        private static void DesserializarEnMasa(List<Producto> devueltos)
         {
             Console.WriteLine("Nombre:  Id:   Categoria:   Precio:   Stock:   Vendidos:   Facturacion:  ");
             Console.WriteLine();
@@ -108,7 +108,7 @@ namespace Models
             Console.ReadKey();
         }
 
-        public static void MenuSecundario(Inventario inv, string seleccion)
+        private static void MenuSecundario(Inventario inv, string seleccion)
         {
            
 

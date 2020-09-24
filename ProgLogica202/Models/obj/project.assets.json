@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models.csproj",
-      "projectName": "Models",
-      "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models.csproj",
+      "projectUniqueName": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models2.csproj",
+      "projectName": "Models2",
+      "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models2.csproj",
       "packagesPath": "C:\\Users\\Fran\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\obj\\",
       "projectStyle": "PackageReference",

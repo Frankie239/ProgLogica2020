@@ -1,0 +1,6 @@
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models1\bin\Debug\Models1.dll
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models1\bin\Debug\Models1.pdb
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models1\obj\Debug\Models.csprojAssemblyReference.cache
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models1\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models1\obj\Debug\Models1.dll
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models1\obj\Debug\Models1.pdb

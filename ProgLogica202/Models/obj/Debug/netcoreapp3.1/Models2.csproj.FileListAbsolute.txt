@@ -1,0 +1,9 @@
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models\bin\Debug\netcoreapp3.1\Models2.deps.json
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models\bin\Debug\netcoreapp3.1\Models2.dll
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models\bin\Debug\netcoreapp3.1\Models2.pdb
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models\obj\Debug\netcoreapp3.1\Models2.csprojAssemblyReference.cache
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models\obj\Debug\netcoreapp3.1\Models2.AssemblyInfoInputs.cache
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models\obj\Debug\netcoreapp3.1\Models2.AssemblyInfo.cs
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models\obj\Debug\netcoreapp3.1\Models2.csproj.CoreCompileInputs.cache
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models\obj\Debug\netcoreapp3.1\Models2.dll
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\Models\obj\Debug\netcoreapp3.1\Models2.pdb

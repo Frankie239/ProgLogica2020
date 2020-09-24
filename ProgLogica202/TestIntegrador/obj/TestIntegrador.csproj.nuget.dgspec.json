@@ -4,12 +4,22 @@
     "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\TestIntegrador\\TestIntegrador.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models.csproj": {
+    "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models1\\Models.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models1\\Models.csproj",
+        "projectName": "Models",
+        "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models1\\Models.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models.csproj",
-        "projectName": "Models",
-        "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models2.csproj",
+        "projectName": "Models2",
+        "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models2.csproj",
         "packagesPath": "C:\\Users\\Fran\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\obj\\",
         "projectStyle": "PackageReference",
@@ -93,8 +103,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models.csproj"
+              "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models1\\Models.csproj": {
+                "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models1\\Models.csproj"
               }
             }
           }
@@ -159,8 +169,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models.csproj"
+              "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models1\\Models.csproj": {
+                "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models1\\Models.csproj"
+              },
+              "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models2.csproj": {
+                "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models2.csproj"
               },
               "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\ProgLogica202\\ProgLogica202.csproj": {
                 "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\ProgLogica202\\ProgLogica202.csproj"

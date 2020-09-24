@@ -4,7 +4,6 @@
     ".NETCoreApp,Version=v3.1": {
       "Models/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
         "compile": {
           "bin/placeholder/Models.dll": {}
         },
@@ -17,8 +16,8 @@
   "libraries": {
     "Models/1.0.0": {
       "type": "project",
-      "path": "../Models/Models.csproj",
-      "msbuildProject": "../Models/Models.csproj"
+      "path": "../Models1/Models.csproj",
+      "msbuildProject": "../Models1/Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -57,8 +56,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models\\Models.csproj"
+            "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models1\\Models.csproj": {
+              "projectPath": "C:\\Users\\Fran\\source\\repos\\ProgLogica2020\\ProgLogica202\\Models1\\Models.csproj"
             }
           }
         }

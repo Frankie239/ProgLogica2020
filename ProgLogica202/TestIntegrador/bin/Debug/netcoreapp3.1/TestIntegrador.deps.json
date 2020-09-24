@@ -12,6 +12,7 @@
           "MSTest.TestFramework": "2.1.0",
           "Microsoft.NET.Test.Sdk": "16.5.0",
           "Models": "1.0.0",
+          "Models2": "1.0.0",
           "ProgLogica202": "1.0.0",
           "coverlet.collector": "1.2.0"
         },
@@ -1074,7 +1075,12 @@
       },
       "Models/1.0.0": {
         "runtime": {
-          "Models.dll": {}
+          "Models1.dll": {}
+        }
+      },
+      "Models2/1.0.0": {
+        "runtime": {
+          "Models2.dll": {}
         }
       },
       "ProgLogica202/1.0.0": {
@@ -1083,6 +1089,14 @@
         },
         "runtime": {
           "ProgLogica202.dll": {}
+        }
+      },
+      "Models.Reference/1.0.0.0": {
+        "runtime": {
+          "Models.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -1707,8 +1721,18 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Models2/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "ProgLogica202/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Models.Reference/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

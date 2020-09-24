@@ -4,8 +4,6 @@ C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\bin\Debug\
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\bin\Debug\netcoreapp3.1\ProgLogica202.runtimeconfig.dev.json
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\bin\Debug\netcoreapp3.1\ProgLogica202.dll
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\bin\Debug\netcoreapp3.1\ProgLogica202.pdb
-C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\bin\Debug\netcoreapp3.1\Models.dll
-C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\bin\Debug\netcoreapp3.1\Models.pdb
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\obj\Debug\netcoreapp3.1\ProgLogica202.csprojAssemblyReference.cache
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\obj\Debug\netcoreapp3.1\ProgLogica202.AssemblyInfoInputs.cache
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\obj\Debug\netcoreapp3.1\ProgLogica202.AssemblyInfo.cs
@@ -14,3 +12,5 @@ C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\obj\Debug\
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\obj\Debug\netcoreapp3.1\ProgLogica202.dll
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\obj\Debug\netcoreapp3.1\ProgLogica202.pdb
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\obj\Debug\netcoreapp3.1\ProgLogica202.genruntimeconfig.cache
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\bin\Debug\netcoreapp3.1\Models1.dll
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ProgLogica202\bin\Debug\netcoreapp3.1\Models1.pdb

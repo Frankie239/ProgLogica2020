@@ -14,7 +14,10 @@ namespace Models
         public int Vendidos;
         
        
-       public double Facturacion { get { return Precio * Vendidos; } }
+       public double Facturacion
+       {
+            get { return Precio * Vendidos; }
+       }
 
        
 

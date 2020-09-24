@@ -97,3 +97,7 @@ C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\TestIntegrador\obj\Debug
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\TestIntegrador\obj\Debug\netcoreapp3.1\TestIntegrador.dll
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\TestIntegrador\obj\Debug\netcoreapp3.1\TestIntegrador.pdb
 C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\TestIntegrador\obj\Debug\netcoreapp3.1\TestIntegrador.genruntimeconfig.cache
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\TestIntegrador\bin\Debug\netcoreapp3.1\Models1.dll
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\TestIntegrador\bin\Debug\netcoreapp3.1\Models2.dll
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\TestIntegrador\bin\Debug\netcoreapp3.1\Models1.pdb
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\TestIntegrador\bin\Debug\netcoreapp3.1\Models2.pdb
