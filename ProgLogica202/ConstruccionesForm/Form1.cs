@@ -23,24 +23,19 @@ namespace ConstruccionesForm
 
         private void ButtonCargar_Click(object sender, EventArgs e)
         {
-
-
-
-
             CargarEnGrid(inventario.MostrarTodos());
-
-
-
-
-
-
-
-
+            ClearTextbox();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ClearTextbox()
         {
-
+            TextboxId.Text = "";
+            TextBoxNombre.Text =  "";
+            textBoxCategoria.Text = "";
+            textBoxPrecio.Text = "";
+            textBoxStock.Text = "";
+            textBoxVendidos.Text = "";
+            labelFacturacion.Text = "";
         }
 
         private void CargarEnGrid(List<Producto> prods)
@@ -55,15 +50,7 @@ namespace ConstruccionesForm
         }
      
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
+        
 
         private void ButtonFacturacion_Click(object sender, EventArgs e)
         {
@@ -77,21 +64,7 @@ namespace ConstruccionesForm
 
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void GridViewProductos_SelectionChanged_1(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void GridViewProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-
-        }
 
         /// <summary>
         /// 
@@ -147,48 +120,33 @@ namespace ConstruccionesForm
             
         }
 
-        private void TextBoxPrecio_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+    
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             bool flag = false;
             if(!string.IsNullOrEmpty(TextboxId.Text))
             {
-                flag = inventario.EliminarProducto(int.Parse(TextboxId.Text));
+                Producto prod = inventario.Buscar(int.Parse(TextboxId.Text));
+                if(prod != null)
+                {
+                    
+                    flag = inventario.EliminarProducto(int.Parse(TextboxId.Text));
+                }
+                
+
+                
             }
             else if(!string.IsNullOrEmpty(TextBoxNombre.Text))
             {
                flag = inventario.EliminarProducto(TextBoxNombre.Text);
             }
-            
+            else
+            {
+                NoEncontrado();
+                
+            }
 
             if (flag)
             {
@@ -198,6 +156,8 @@ namespace ConstruccionesForm
                
 
         }
+
+      
 
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
@@ -213,10 +173,7 @@ namespace ConstruccionesForm
             CargarEnGrid(inventario.MostrarTodos());
         }
 
-        private void labelFacturacion_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void buttonStockZero_Click(object sender, EventArgs e)
         {
@@ -247,6 +204,63 @@ namespace ConstruccionesForm
         private void button5_Click(object sender, EventArgs e)
         {
             CargarEnGrid(inventario.MostrarSegunCategoria());
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+            Producto prod;
+            if (!string.IsNullOrEmpty(TextboxId.Text))
+            {
+                prod = inventario.Buscar(int.Parse(TextboxId.Text));
+                FromObjectToTextbox(prod);
+
+
+
+            }
+            else if (!string.IsNullOrEmpty(TextBoxNombre.Text))
+            {
+                prod = inventario.Buscar(TextBoxNombre.Text);
+               
+                
+            }
+            else
+            {
+                NoEncontrado();
+                prod = null;
+
+            }
+
+            if (prod != null)
+            {
+                FromObjectToTextbox(prod);
+                cargarThumbnail(prod.IdProducto.ToString());
+            }
+
+
+        }
+
+        private void FromObjectToTextbox(Producto prod)
+        {
+            if (prod != null)
+            {
+                TextboxId.Text = prod.IdProducto.ToString();
+                TextBoxNombre.Text = prod.Nombre;
+                textBoxCategoria.Text = prod.Categoria;
+                textBoxPrecio.Text = prod.Precio.ToString();
+                textBoxStock.Text = prod.StockActual.ToString();
+                textBoxVendidos.Text = prod.Vendidos.ToString();
+
+            }
+            else
+                NoEncontrado();
+            
+        }
+
+        private void NoEncontrado()
+        {
+            string message = string.Format("El producto que buscas no existe");
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result = MessageBox.Show(message, "prod no existe", buttons);
         }
     }
 }
