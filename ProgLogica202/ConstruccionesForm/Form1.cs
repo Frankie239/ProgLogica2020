@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Models;
 using System.IO;
+using System.Reflection;
 
 namespace ConstruccionesForm
 {
@@ -107,11 +108,18 @@ namespace ConstruccionesForm
         /// <param name="id">id del producto con el mism nombre que la imagen</param>
         private void cargarThumbnail(string id)
         {
+            string ImagesDirectory =
+            Path.Combine(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                "img/"
+                );
 
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             try
             {
-                pictureBox.Image = Image.FromFile(string.Format(@"C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\img\" + id + ".jpg"));
+                pictureBox.Load(ImagesDirectory+id+".jpg");
+                //ictureBox.Image = Image.FromFile(string.Format(@"C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm));
+               // Image.FromFile(string.Format(@"\img\" + id + ".jpg"));
             }
             catch (FileNotFoundException)
             {
