@@ -6,12 +6,13 @@ namespace Models
 {
     public class Producto
     {
-        public string Nombre;
-        public int IdProducto;
-        public string Categoria;
-        public double Precio;
-        public int StockActual;
-        public int Vendidos;
+        public int IdProducto { set; get; }
+        public string Nombre { set; get; }
+        
+        public string Categoria { set; get; }
+        public double Precio { set; get; }
+        public int StockActual { set; get; }
+        public int Vendidos { set; get; }
 
 
         public double Facturacion

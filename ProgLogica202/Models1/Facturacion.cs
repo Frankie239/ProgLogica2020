@@ -28,7 +28,7 @@ namespace Models
         public static List<Producto> ProductosPorFacturacion(Inventario inventario)
         {
             List<Producto> Ordenados = new List<Producto>();
-            Ordenados = inventario.Productos;
+            Ordenados = inventario.MostrarTodos();
             Ordenados.Sort((x, y) => x.Facturacion.CompareTo(y.Facturacion));
             return Ordenados;
         }

@@ -93,11 +93,20 @@ namespace Models
               StockActual =45,
               Vendidos = 1500
             },
+            new Producto
+            {
+                Nombre ="Bebe abollado",
+                IdProducto = 31,
+                Categoria = "Plomeria",
+                Precio = 3000,
+                StockActual = 150,
+                Vendidos = 0
+            },
 
             new Producto
             {
               Nombre = "Martillo",
-              IdProducto = 31,
+              IdProducto = 23,
               Categoria = "Herramientas",
               Precio =120.00,
               StockActual = 150,
@@ -123,6 +132,7 @@ namespace Models
 
         public List<Producto> MostrarTodos()
         {
+            Productos.Sort((x, y) => x.IdProducto.CompareTo(y.IdProducto));
             return Productos;
 
         }
@@ -245,6 +255,13 @@ namespace Models
             Producto encontrado = Buscar(id);
 
             return SeekDestroyAndAdd(encontrado, aModificar);
+        }
+
+        public List<Producto> MostrarSegunCategoria()
+        {
+            List<Producto> encontrados = Productos;
+            encontrados.Sort((x, y) => x.Categoria.CompareTo(y.Categoria));
+            return encontrados;
         }
 
         /// <summary>

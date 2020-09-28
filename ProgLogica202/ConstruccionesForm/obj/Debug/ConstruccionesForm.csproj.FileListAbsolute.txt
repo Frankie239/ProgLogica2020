@@ -1,0 +1,13 @@
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\bin\Debug\ConstruccionesForm.exe.config
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\bin\Debug\ConstruccionesForm.exe
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\bin\Debug\ConstruccionesForm.pdb
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\bin\Debug\Models1.dll
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\bin\Debug\Models1.pdb
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\obj\Debug\ConstruccionesForm.csprojAssemblyReference.cache
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\obj\Debug\ConstruccionesForm.Form1.resources
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\obj\Debug\ConstruccionesForm.Properties.Resources.resources
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\obj\Debug\ConstruccionesForm.csproj.GenerateResource.cache
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\obj\Debug\ConstruccionesForm.csproj.CoreCompileInputs.cache
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\obj\Debug\ConstruccionesForm.csproj.CopyComplete
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\obj\Debug\ConstruccionesForm.exe
+C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\obj\Debug\ConstruccionesForm.pdb
