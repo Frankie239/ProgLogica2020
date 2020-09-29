@@ -22,12 +22,20 @@ namespace ConstruccionesForm
             CargarEnGrid(inventario.MostrarTodos());
         }
 
+        /// <summary>
+        /// Carga todos los datos en la grilla ordenados por su id  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonCargar_Click(object sender, EventArgs e)
         {
             CargarEnGrid(inventario.MostrarTodos());
             ClearTextbox();
         }
 
+        /// <summary>
+        /// Limpia todas las textbox para que no quedn datos sueltos
+        /// </summary>
         private void ClearTextbox()
         {
             TextboxId.Text = "";
@@ -38,7 +46,10 @@ namespace ConstruccionesForm
             textBoxVendidos.Text = "";
             labelFacturacion.Text = "";
         }
-
+        /// <summary>
+        /// Carga en grid todos los elementos del inventario
+        /// </summary>
+        /// <param name="prods">Lista de productos a cargar en la grilla</param>
         private void CargarEnGrid(List<Producto> prods)
         {
 
@@ -52,7 +63,11 @@ namespace ConstruccionesForm
      
 
         
-
+        /// <summary>
+        /// Carga y ordena los productos por el coef. de facturacion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonFacturacion_Click(object sender, EventArgs e)
         {
             //List<Producto> prods = inventario.MostrarSegunStock('A');
@@ -68,7 +83,7 @@ namespace ConstruccionesForm
 
 
         /// <summary>
-        /// 
+        /// Carga los datos en las textbox a traves del click en una de sus rows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -88,6 +103,10 @@ namespace ConstruccionesForm
 
 
         }
+        /// <summary>
+        /// Agarra la informacion desde las textbox y las pone en un producto para luego manipularlo
+        /// </summary>
+        /// <returns>Producto con toda la informacion para cargar en la lista</returns>
         private Producto FromTextboxToObject()
         {
             Producto Arranged = new Producto();
@@ -133,30 +152,31 @@ namespace ConstruccionesForm
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            bool flag = false;
-            if(!string.IsNullOrEmpty(TextboxId.Text))
+            bool flag = false;//Flag para saber si se pudo eliminar
+            if(!string.IsNullOrEmpty(TextboxId.Text)) //Si no esta vacio el textbox
             {
-                Producto prod = inventario.Buscar(int.Parse(TextboxId.Text));
+                Producto prod = inventario.Buscar(int.Parse(TextboxId.Text));//busca por id
                 if(prod != null)
                 {
-                    
+                    //Y si existe, lo borra
                     flag = inventario.EliminarProducto(int.Parse(TextboxId.Text));
                 }
                 
 
                 
             }
-            else if(!string.IsNullOrEmpty(TextBoxNombre.Text))
+
+            else if(!string.IsNullOrEmpty(TextBoxNombre.Text)) //Sino, busca el dato con un string, de la misma forma que el anterior
             {
                flag = inventario.EliminarProducto(TextBoxNombre.Text);
             }
             else
             {
-                NoEncontrado();
+                NoEncontrado();//Sino, muestra un error message
                 
             }
 
-            if (flag)
+            if (flag)//SI salio bien, refresca
             {
                 CargarEnGrid(inventario.MostrarTodos());
             }
@@ -165,13 +185,31 @@ namespace ConstruccionesForm
 
         }
 
-      
 
+        /// <summary>
+        /// Agrega un producto si la cantidad de productos es menor a 12
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
-            Producto prod = FromTextboxToObject();
-            inventario.AgregarNuevoProducto(prod);
-            CargarEnGrid(inventario.MostrarTodos());
+            if (inventario.Productos.Count != 12)//Si la lista tiene menos de 12 productos
+            {
+                //Metelo en un objeto
+                Producto prod = FromTextboxToObject();
+                //Agregalo a la lista
+                inventario.AgregarNuevoProducto(prod);
+                //Refrescame la lista
+                CargarEnGrid(inventario.MostrarTodos());
+            }
+            else
+            {
+                //Mostrame un error de que esta lleno y un ok
+                string message = string.Format("El inventario esta lleno, elimine algun producto e intente nuevamente");
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, "Inventario lleno", buttons);
+            }
+           
         }
 
         private void buttonModificar_Click(object sender, EventArgs e)
@@ -182,22 +220,38 @@ namespace ConstruccionesForm
         }
 
 
-
+        /// <summary>
+        /// Carga los objetos que tengan stock 0
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonStockZero_Click(object sender, EventArgs e)
         {
             CargarEnGrid(inventario.MostrarSegunStock('A'));
         }
-
+        /// <summary>
+        /// Carga los objetos que tengan stock menor a 100
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             CargarEnGrid(inventario.MostrarSegunStock('B'));
         }
-
+        /// <summary>
+        /// Carga los objetos que tengan stock mayor a 100
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             CargarEnGrid(inventario.MostrarSegunStock('C'));
         }
-
+        /// <summary>
+        /// Muestra el prod. mas vendido
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
             Producto encontrado = inventario.ProductoMasVendido();
@@ -208,12 +262,21 @@ namespace ConstruccionesForm
 
             CargarEnGrid(prods);
         }
-
+        /// <summary>
+        /// Muestra segun categoria
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
             CargarEnGrid(inventario.MostrarSegunCategoria());
         }
 
+        /// <summary>
+        /// Carga un producto a partir de su id o su string
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             Producto prod;
@@ -247,6 +310,10 @@ namespace ConstruccionesForm
 
         }
 
+        /// <summary>
+        /// serializa un producto hacia las textbox
+        /// </summary>
+        /// <param name="prod">Producto a cargar</param>
         private void FromObjectToTextbox(Producto prod)
         {
             if (prod != null)
@@ -264,6 +331,9 @@ namespace ConstruccionesForm
             
         }
 
+        /// <summary>
+        /// si un producto no esta, muestra un messageBox
+        /// </summary>
         private void NoEncontrado()
         {
             string message = string.Format("El producto que buscas no existe");

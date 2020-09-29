@@ -10,7 +10,9 @@ namespace Models
 
 
         const int MaxProductos = 12;
-
+        /// <summary>
+        /// Carga el contenido default de la clase
+        /// </summary>
         public List<Producto> Productos = new List<Producto>()
         {
             new Producto
@@ -93,15 +95,7 @@ namespace Models
               StockActual =45,
               Vendidos = 1500
             },
-            new Producto
-            {
-                Nombre ="Bebe abollado",
-                IdProducto = 31,
-                Categoria = "Plomeria",
-                Precio = 3000,
-                StockActual = 150,
-                Vendidos = 0
-            },
+          
 
             new Producto
             {
@@ -130,13 +124,21 @@ namespace Models
             Productos.Capacity = MaxProductos;
         }
 
+        /// <summary>
+        /// Carga en una lista todos los productos de la lista privada productos
+        /// </summary>
+        /// <returns>Lista de productos ordenados por id</returns>
         public List<Producto> MostrarTodos()
         {
             Productos.Sort((x, y) => x.IdProducto.CompareTo(y.IdProducto));
             return Productos;
 
         }
-
+        /// <summary>
+        /// Elige una categoria y devuelve todos los productos de esa categoria
+        /// </summary>
+        /// <param name="Categoria">string categoria para buscar</param>
+        /// <returns>Lista de productos de la categoria especificada</returns>
         public List<Producto> MostrarSegunCategoria(string Categoria)
         {
             List<Producto> productos = new List<Producto>();
@@ -157,8 +159,8 @@ namespace Models
         /// <summary>
         /// Ordena y devuelve los productos por su cantidad de stock
         /// </summary>
-        /// <param name="seleccion"></param>
-        /// <returns></returns>
+        /// <param name="seleccion">Char, A es stock 0, B es menos de 100 y C es mayor de 100</param>
+        /// <returns>Lista de productos con stock especifico</returns>
         public List<Producto> MostrarSegunStock(char seleccion)
         {
             List<Producto> Encontrados = new List<Producto>();
@@ -190,6 +192,10 @@ namespace Models
             return Encontrados;
         }
 
+        /// <summary>
+        /// Busca el producto con mas unidades vendidas
+        /// </summary>
+        /// <returns>el producto mas vendido</returns>
         public Producto ProductoMasVendido()
         {
             //Pa refactoring
@@ -198,6 +204,10 @@ namespace Models
             return encontrados[encontrados.Count - 1];
 
         }
+        /// <summary>
+        /// Producto con un mayor precio
+        /// </summary>
+        /// <returns>El producto de mayor precio</returns>
 
         public Producto ProductoMasCaro()
         {
@@ -257,6 +267,10 @@ namespace Models
             return SeekDestroyAndAdd(encontrado, aModificar);
         }
 
+        /// <summary>
+        /// Ordena los objetos por su categoria y los devuelve ordenados
+        /// </summary>
+        /// <returns>Lista de los productos ordenados por cateogria</returns>
         public List<Producto> MostrarSegunCategoria()
         {
             List<Producto> encontrados = Productos;

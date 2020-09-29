@@ -6,7 +6,11 @@ namespace Models
 {
     public static class MenuController
     {
-
+        
+        /// <summary>
+        /// Muestra el menu principal
+        /// </summary>
+        /// <returns>Devuelve la decision la cual se quiere seguir en el menu secundario</returns>
         private static string MenuPrincipal()
         {
             string presionada = "0";
@@ -37,6 +41,10 @@ namespace Models
             return presionada;
         }
 
+        /// <summary>
+        /// Inicializa la aplicacion llamando al menu principal siempre y cuando sea distinto a 7(Escape de la aplicacion)
+        /// </summary>
+        /// <param name="inv">inventario a modificar</param>
         public static void Inicializar(Inventario inv)
         {
             string seleccion = "0";
@@ -49,7 +57,10 @@ namespace Models
 
 
         }
-
+        /// <summary>
+        /// Serializa un objeto desde el 
+        /// </summary>
+        /// <returns>El producto serializado para utilizar</returns>
         private static Producto Serializar()
         {
             Producto serializado = new Producto();
@@ -75,6 +86,10 @@ namespace Models
             return serializado;
         }
 
+        /// <summary>
+        /// Agarra un objeto y lo muestra en pantalla en forma de una fila de una tabla
+        /// </summary>
+        /// <param name="prod">Producto a mostrar</param>
         private static void Deserializar(Producto prod)
         {
             if (prod != null)
@@ -94,6 +109,10 @@ namespace Models
             else Console.WriteLine("El producto no existe");
 
         }
+
+        /// <summary>
+        /// Muestra los headers de la tabla
+        /// </summary>
         private static void Headers()
         {
 
@@ -115,6 +134,10 @@ namespace Models
             Console.ForegroundColor = ConsoleColor.White;
         }
 
+        /// <summary>
+        /// Deserializa todos los productos de la lista y los muestra en consola
+        /// </summary>
+        /// <param name="devueltos">Lista de productos a deserializar</param>
         private static void DesserializarEnMasa(List<Producto> devueltos)
         {
 
@@ -127,7 +150,11 @@ namespace Models
             Console.WriteLine();
             Console.ReadKey();
         }
-
+        /// <summary>
+        /// Muestra el menu secundario en la consola que tiene las decisiones para seguir, tambien llama los metodos pertinentes
+        /// </summary>
+        /// <param name="inv">inventario a modificar</param>
+        /// <param name="seleccion">seleccion que viene de una anterior iteracion con el menu principal</param>
         private static void MenuSecundario(Inventario inv, string seleccion)
         {
 
@@ -137,11 +164,12 @@ namespace Models
             {
                 case "11":
 
-
+                    //Mostar todos
                     MenuController.DesserializarEnMasa(inv.MostrarTodos());
                     break;
 
                 case "12":
+                    //Mostrar por categoria
                     Console.WriteLine("Ingrese categoria: ");
                     string cat = Console.ReadLine();
 
@@ -150,6 +178,7 @@ namespace Models
 
                     break;
                 case "13":
+                    //Mostrar segun stock
                     Console.WriteLine("Categoria de stock: \n" +
                         "A sin stock\n" +
                         "B Stock menor a 100\n" +
@@ -161,12 +190,13 @@ namespace Models
                     break;
                 case "14":
 
-
+                    //Muestra producto mas vendido
                     MenuController.Deserializar(inv.ProductoMasVendido());
 
                     break;
 
                 case "21":
+                    //Busca un producto por su nombre
                     Console.WriteLine("Ingrese el nombre del producto a buscar");
                     string aBuscar = Console.ReadLine();
 
@@ -179,6 +209,7 @@ namespace Models
 
 
                 case "22":
+                    //busca un producto por su id
                     Console.WriteLine("Ingrese el id del producto a buscar");
                     int id = 0;
                     Int32.TryParse(Console.ReadLine(), out id);
@@ -187,29 +218,36 @@ namespace Models
                     break;
 
                 case "3":
+                    //Agrega un producto a la lista de inventario
                     producto = MenuController.Serializar();
-
-                    if (inv.AgregarNuevoProducto(producto) != null)
+                    if (inv.Productos.Count != 12)
                     {
-                        Console.WriteLine("Producto agregado satisfactoriamente");
+                        if (inv.AgregarNuevoProducto(producto) != null)
+                        {
+                            Console.WriteLine("Producto agregado satisfactoriamente");
 
+                        }
                     }
+                    
                     else Console.WriteLine("El inventario esta lleno, por favor, elimine un producto y vuelva a intentar");
                     break;
 
                 case "4":
+                    //Modifica un producto
                     producto = MenuController.Serializar();
 
                     Console.WriteLine("Ingrese un id o un nombre del producto a modificar");
                     string Select = Console.ReadLine();
 
-                    if (int.TryParse(Select, out id))
+                    if (int.TryParse(Select, out id))//Si es un int: 
                     {
+                        //usa la sobrecarga del id
                         inv.ModificarProducto(id, producto);
 
                     }
                     else
                     {
+                        //Sino, usa la del nombre
                         inv.ModificarProducto(Select, producto);
                     }
                     break;
@@ -255,16 +293,17 @@ namespace Models
                     break;
 
                 case "61":
-
+                    //Muestra el producto que mas facturo
                     MenuController.Deserializar(Facturacion.ProductoQueMasFacturo(inv));
                     break;
 
                 case "62":
-
+                    //Muestra los prods ordenados por facturacion
                     MenuController.DesserializarEnMasa(Facturacion.ProductosPorFacturacion(inv));
                     break;
 
                 case "63":
+                    //Muestra todos los campos de facturacin
                     double fact = Facturacion.MostrarFacturacionTotal(inv);
                     List<Producto> encontrados = Facturacion.ProductosPorFacturacion(inv);
                     Producto encontrado = Facturacion.ProductoQueMasFacturo(inv);
@@ -280,6 +319,7 @@ namespace Models
                     break;
 
                 case "7":
+                    //confirmacion de salida
                     Console.Write("Esta seguro que desea salir? Y/N");
                     Select = Console.ReadLine();
                     if (Select == "Y")
