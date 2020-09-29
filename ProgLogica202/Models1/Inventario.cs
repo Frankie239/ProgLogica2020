@@ -75,7 +75,15 @@ namespace Models
               StockActual = 5,
               Vendidos = 495
             },
-
+              new Producto
+            {
+                Nombre ="Bebe abollado",
+                IdProducto = 31,
+                Categoria = "Plomeria",
+                Precio = 3000,
+                StockActual = 150,
+                Vendidos = 0
+            },
             new Producto
             {
               Nombre = "canillas",
