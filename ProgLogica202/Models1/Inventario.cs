@@ -95,11 +95,7 @@ namespace Models
               StockActual =45,
               Vendidos = 1500
             },
-<<<<<<< HEAD
-          
-=======
-            
->>>>>>> master
+
 
             new Producto
             {
