@@ -31,6 +31,7 @@ namespace ConstruccionesForm
         {
             CargarEnGrid(inventario.MostrarTodos());
             ClearTextbox();
+            cargarThumbnail("0");
         }
 
         /// <summary>
@@ -110,15 +111,31 @@ namespace ConstruccionesForm
         private Producto FromTextboxToObject()
         {
             Producto Arranged = new Producto();
-            Arranged.IdProducto = int.Parse(TextboxId.Text);
-            Arranged.Nombre = TextBoxNombre.Text;
-            Arranged.Categoria = textBoxCategoria.Text;
-            Arranged.Precio = int.Parse(textBoxPrecio.Text);
-            Arranged.StockActual = int.Parse(textBoxStock.Text);
-            Arranged.Vendidos = int.Parse(textBoxVendidos.Text);
-           
+            if (CheckCompletion())
+            {
 
+                Arranged.IdProducto = int.Parse(TextboxId.Text);
+                Arranged.Nombre = TextBoxNombre.Text;
+                Arranged.Categoria = textBoxCategoria.Text;
+                Arranged.Precio = int.Parse(textBoxPrecio.Text);
+                Arranged.StockActual = int.Parse(textBoxStock.Text);
+                Arranged.Vendidos = int.Parse(textBoxVendidos.Text);
+
+
+            }
+            else
+            {
+                string message = string.Format("Por favor, complete todos los campos");
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, "Campos no completos", buttons);
+                Arranged.Nombre = "";
+
+            }
             return Arranged;
+
+
+
+
         }
 
         /// <summary>
@@ -145,6 +162,22 @@ namespace ConstruccionesForm
                 pictureBox.Image = Image.FromFile(string.Format(@"C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\img\notFound.jpg"));
             }
             
+        }
+        private void ClearThumbnail()
+        {
+
+            Graphics g = Graphics.FromImage(pictureBox.Image);
+            g.Clear(pictureBox.BackColor);
+        }
+
+        private bool CheckCompletion()
+        {
+            if (string.IsNullOrEmpty(TextBoxNombre.Text) || string.IsNullOrEmpty(textBoxCategoria.Text) || string.IsNullOrEmpty(TextboxId.Text) || string.IsNullOrEmpty(textBoxPrecio.Text))
+            {
+                return false;
+            }
+            else
+                return true;
         }
 
 
@@ -197,10 +230,15 @@ namespace ConstruccionesForm
             {
                 //Metelo en un objeto
                 Producto prod = FromTextboxToObject();
-                //Agregalo a la lista
-                inventario.AgregarNuevoProducto(prod);
-                //Refrescame la lista
-                CargarEnGrid(inventario.MostrarTodos());
+
+                if (!string.IsNullOrEmpty(prod.Nombre))
+                {
+                    //Agregalo a la lista
+                    inventario.AgregarNuevoProducto(prod);
+                    //Refrescame la lista
+                    CargarEnGrid(inventario.MostrarTodos());
+                }
+            
             }
             else
             {
@@ -215,8 +253,12 @@ namespace ConstruccionesForm
         private void buttonModificar_Click(object sender, EventArgs e)
         {
             Producto prod = FromTextboxToObject();
-            inventario.ModificarProducto(int.Parse(TextboxId.Text), prod);
-            CargarEnGrid(inventario.MostrarTodos());
+            if (!string.IsNullOrEmpty(prod.Nombre))
+            {
+
+                inventario.ModificarProducto(int.Parse(TextboxId.Text), prod);
+                CargarEnGrid(inventario.MostrarTodos());
+            }
         }
 
 
@@ -279,7 +321,8 @@ namespace ConstruccionesForm
         /// <param name="e"></param>
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
-            Producto prod;
+            Producto prod = new Producto();
+            List<Producto> prods = new List<Producto>();
             if (!string.IsNullOrEmpty(TextboxId.Text))
             {
                 prod = inventario.Buscar(int.Parse(TextboxId.Text));
@@ -290,9 +333,17 @@ namespace ConstruccionesForm
             }
             else if (!string.IsNullOrEmpty(TextBoxNombre.Text))
             {
-                prod = inventario.Buscar(TextBoxNombre.Text);
-               
+                prods = inventario.BuscarBulk(TextBoxNombre.Text);
+                CargarEnGrid(prods);
+                if (prods.Count != 0)
+                {
+                    Producto first = prods[0];
+                    FromObjectToTextbox(first);
+                }
+                else NoEncontrado();
                 
+
+
             }
             else
             {
@@ -339,6 +390,13 @@ namespace ConstruccionesForm
             string message = string.Format("El producto que buscas no existe");
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             DialogResult result = MessageBox.Show(message, "prod no existe", buttons);
+        }
+
+        private bool Existe(int id)
+        {
+            Producto prod = inventario.Buscar(id);
+            if (prod.IdProducto != null && prod.Nombre != null) return true;
+            else return false;
         }
     }
 }

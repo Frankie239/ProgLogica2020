@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
+
 
 namespace Models
 {
@@ -75,15 +77,7 @@ namespace Models
               StockActual = 5,
               Vendidos = 495
             },
-              new Producto
-            {
-                Nombre ="Bebe abollado",
-                IdProducto = 31,
-                Categoria = "Plomeria",
-                Precio = 3000,
-                StockActual = 150,
-                Vendidos = 0
-            },
+           
             new Producto
             {
               Nombre = "canillas",
@@ -231,7 +225,8 @@ namespace Models
         /// <returns>Returna el producto que se agrego, si no se pudo, retorna null</returns>
         public Producto AgregarNuevoProducto(Producto aAgregar)
         {
-            bool pudo = true; //Flag para controlar si se pudo. 
+            bool pudo = true; //Flag para controlar si se pudo.
+             
             try
             {
                 Productos.Add(aAgregar);
@@ -360,15 +355,40 @@ namespace Models
         /// </summary>
         /// <param name="nombre">Nombre del producto a buscar</param>
         /// <returns>El producto encontrado de menor id.</returns>
+        public List<Producto> BuscarBulk(string nombre)
+        {
+            string pattern = string.Format(@"({0})", nombre);
+            RegexOptions options =RegexOptions.Multiline | RegexOptions.IgnoreCase;
+            Productos.Sort((x, y) => x.IdProducto.CompareTo(y.IdProducto));
+            List<Producto> prods = new List<Producto>();
+
+            foreach (Producto prod in Productos)
+            {
+                if (Regex.IsMatch(prod.Nombre, pattern,options)){
+                    prods.Add(prod);
+                }
+                   
+            }
+            
+            return prods;
+          
+            
+        }
         public Producto Buscar(string nombre)
         {
             Productos.Sort((x, y) => x.IdProducto.CompareTo(y.IdProducto));
             foreach (Producto prod in Productos)
             {
                 if (prod.Nombre == nombre)
+                {
                     return prod;
+                }
+
+                
+
             }
             return null;
+
         }
         /// <summary>
         /// Ordena una lista por el campo stock de los productos
