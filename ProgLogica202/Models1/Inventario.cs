@@ -351,7 +351,7 @@ namespace Models
             return null;
         }
         /// <summary>
-        /// Busca un producto por su nombre, si hay dos con el mismo retorna el de menor id
+        /// Busca un producto por su nombre si hay parecidos lo devuelve en una lista
         /// </summary>
         /// <param name="nombre">Nombre del producto a buscar</param>
         /// <returns>El producto encontrado de menor id.</returns>
@@ -374,6 +374,11 @@ namespace Models
           
             
         }
+        /// <summary>
+        /// Busca un solo producto por su nombre, aparece el de menor id
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
         public Producto Buscar(string nombre)
         {
             Productos.Sort((x, y) => x.IdProducto.CompareTo(y.IdProducto));
