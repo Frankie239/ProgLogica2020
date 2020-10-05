@@ -391,13 +391,14 @@ namespace ConstruccionesForm
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             DialogResult result = MessageBox.Show(message, "prod no existe", buttons);
         }
-
+        /*
         private bool Existe(int id)
         {
             Producto prod = inventario.Buscar(id);
             if (prod.IdProducto != null && prod.Nombre != null) return true;
             else return false;
         }
+        */
     }
 }
 
