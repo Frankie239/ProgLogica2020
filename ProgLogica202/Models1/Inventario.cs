@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -9,8 +10,6 @@ namespace Models
 
     public class Inventario
     {
-
-
         const int MaxProductos = 12;
         /// <summary>
         /// Carga el contenido default de la clase
@@ -24,9 +23,7 @@ namespace Models
               Categoria = "Construccion",
               Precio =80.00,
               StockActual = 120,
-              Vendidos = 50
-
-
+              Vendidos = 50,
             },
             new Producto
             {
@@ -35,8 +32,7 @@ namespace Models
               Categoria = "Herramientas",
               Precio =95.00,
               StockActual = 124,
-              Vendidos = 13
-
+              Vendidos = 13,
             },
             new Producto
             {
@@ -45,8 +41,7 @@ namespace Models
               Categoria = "Electricidad",
               Precio =20.00,
               StockActual = 300,
-              Vendidos = 100
-
+              Vendidos = 100,
             },
             new Producto
             {
@@ -55,8 +50,7 @@ namespace Models
               Categoria = "Plomaria",
               Precio =100.00,
               StockActual = 0,
-              Vendidos = 500
-
+              Vendidos = 500,
             },
             new Producto
             {
@@ -65,8 +59,7 @@ namespace Models
               Categoria = "Herramientas",
               Precio =135.00,
               StockActual = 80,
-              Vendidos = 25
-
+              Vendidos = 25,
             },
             new Producto
             {
@@ -75,7 +68,7 @@ namespace Models
               Categoria = "Plomeria",
               Precio =100.00,
               StockActual = 5,
-              Vendidos = 495
+              Vendidos = 495,
             },
            
             new Producto
@@ -85,7 +78,7 @@ namespace Models
               Categoria = "Plomeria",
               Precio =45.00,
               StockActual = 15,
-              Vendidos = 1200
+              Vendidos = 1200,
             },
 
             new Producto
@@ -95,10 +88,9 @@ namespace Models
               Categoria = "Construccion",
               Precio =60.00,
               StockActual =45,
-              Vendidos = 1500
+              Vendidos = 1500,
             },
-
-
+            
             new Producto
             {
               Nombre = "Martillo",
@@ -106,7 +98,7 @@ namespace Models
               Categoria = "Herramientas",
               Precio =120.00,
               StockActual = 150,
-              Vendidos = 95
+              Vendidos = 95,
             },
 
             new Producto
@@ -116,9 +108,8 @@ namespace Models
               Categoria = "Electricidad",
               Precio =50.00,
               StockActual = 98,
-              Vendidos = 30
+              Vendidos = 30,
             }
-
         };
 
         public Inventario()
@@ -134,8 +125,8 @@ namespace Models
         {
             Productos.Sort((x, y) => x.IdProducto.CompareTo(y.IdProducto));
             return Productos;
-
         }
+        
         /// <summary>
         /// Elige una categoria y devuelve todos los productos de esa categoria
         /// </summary>
@@ -149,10 +140,7 @@ namespace Models
                 if (prod.Categoria == Categoria)
                 {
                     productos.Add(prod);
-
                 }
-
-
             }
 
             return productos;
@@ -170,26 +158,18 @@ namespace Models
             switch (seleccion)
             {
                 case 'A':
-
                     Encontrados = Buscar(0, 0);
-
-
-
                     break;
 
                 case 'B':
                     Encontrados = Buscar(0, 100);
-
                     break;
 
                 case 'C':
                     Encontrados = Buscar(100, int.MaxValue);
                     break;
-
-                default:
-
-                    break;
             }
+            
             SortByStock(Encontrados);
             return Encontrados;
         }
@@ -200,11 +180,9 @@ namespace Models
         /// <returns>el producto mas vendido</returns>
         public Producto ProductoMasVendido()
         {
-            //Pa refactoring
             List<Producto> encontrados = Productos;
             encontrados.Sort((x, y) => x.Vendidos.CompareTo(y.Vendidos));
             return encontrados[encontrados.Count - 1];
-
         }
         /// <summary>
         /// Producto con un mayor precio
@@ -213,7 +191,6 @@ namespace Models
 
         public Producto ProductoMasCaro()
         {
-            //Pa refactoring
             List<Producto> encontrados = Productos;
             encontrados.Sort((x, y) => x.Precio.CompareTo(y.Precio));
             return encontrados[encontrados.Count - 1];
@@ -242,7 +219,6 @@ namespace Models
             }
 
             else return null;
-
         }
 
         /// <summary>
@@ -266,7 +242,6 @@ namespace Models
         public Producto ModificarProducto(int id, Producto aModificar)
         {
             Producto encontrado = Buscar(id);
-
             return SeekDestroyAndAdd(encontrado, aModificar);
         }
 
@@ -297,6 +272,7 @@ namespace Models
 
             else return false;
         }
+        
         /// <summary>
         /// Elimina un producto por su nombre, si hay dos coen el mismo, elimina el de menor id
         /// </summary>
@@ -311,10 +287,7 @@ namespace Models
                 return true;
 
             else return false;
-
-
         }
-
 
         /// <summary>
         /// Busca un producto segun un stock maximo y uno minimo, si quieres que sea de un stock especifico, van los dos del mismo.
@@ -329,12 +302,9 @@ namespace Models
             {
                 if (prod.StockActual >= stockMin && prod.StockActual <= StockMax)
                     encontrados.Add(prod);
-
             }
-
+            
             return encontrados;
-
-
         }
         /// <summary>
         /// Busca un producto por su id
@@ -371,8 +341,6 @@ namespace Models
             }
             
             return prods;
-          
-            
         }
         /// <summary>
         /// Busca un solo producto por su nombre, aparece el de menor id
@@ -388,13 +356,11 @@ namespace Models
                 {
                     return prod;
                 }
-
-                
-
             }
             return null;
 
         }
+        
         /// <summary>
         /// Ordena una lista por el campo stock de los productos
         /// </summary>

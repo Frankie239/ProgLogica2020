@@ -25,15 +25,12 @@ namespace Models
                     presionada += Console.ReadLine();
                     break;
 
-
-
                 case "6":
                     Console.WriteLine("1 Mostrar Producto que mas facturo\n2 Mostrar Facturacion por producto ordenada de menor a mayor\n3 Mostrar Facturacion total \n");
                     presionada += Console.ReadLine();
                     break;
-
-
             }
+
             return presionada;
         }
 
@@ -46,8 +43,6 @@ namespace Models
                 seleccion = MenuPrincipal();
                 MenuSecundario(inv, seleccion);
             }
-            
-
         }
 
         private static Producto Serializar()
@@ -71,7 +66,6 @@ namespace Models
             Console.WriteLine("Ingrese una cantidad de vendidos");
             serializado.Vendidos = int.Parse(Console.ReadLine());
 
-
             return serializado;
         }
 
@@ -88,7 +82,9 @@ namespace Models
                 Console.WriteLine("Vendidos: " + prod.Vendidos);
                 Console.WriteLine("Facturacion: $" + prod.Facturacion);
             }
-            else Console.WriteLine("El producto no existe");
+
+            else
+                Console.WriteLine("El producto no existe");
 
         }
 
@@ -99,8 +95,6 @@ namespace Models
             foreach (Producto prod in devueltos)
             {
                 Console.Write(prod.Nombre + "   " + prod.IdProducto + "   " + prod.Categoria + "   " + prod.Precio + "   " + prod.StockActual + "   " + prod.StockActual + "   " + prod.Facturacion + "   \n");
-                //Si te gusta verlo como una lista de productos descomentar esto y comentar lo de arriba
-                //Deserializar(prod);
                 Console.WriteLine();
 
             }
@@ -110,25 +104,18 @@ namespace Models
 
         private static void MenuSecundario(Inventario inv, string seleccion)
         {
-           
-
-                
             switch (seleccion)
             {
                 case "11":
-
-                        
                     MenuController.DesserializarEnMasa(inv.MostrarTodos());
                     break;
 
                 case "12":
                     Console.WriteLine("Ingrese categoria: ");
                     string cat = Console.ReadLine();
-                        
-
                     MenuController.DesserializarEnMasa(inv.MostrarSegunCategoria(cat));
-
                     break;
+
                 case "13":
                     Console.WriteLine("Categoria de stock: \n" +
                         "A sin stock\n" +
@@ -136,27 +123,17 @@ namespace Models
                         "C Stock mayor a 100");
                     char elegido = char.Parse(Console.ReadLine());
                         MenuController.DesserializarEnMasa(inv.MostrarSegunStock(elegido));
-
-
                     break;
+
                 case "14":
-                       
-
                     MenuController.Deserializar(inv.ProductoMasVendido());
-
                     break;
 
                 case "21":
                     Console.WriteLine("Ingrese el nombre del producto a buscar");
                     string aBuscar = Console.ReadLine();
-                                           
-
                     MenuController.Deserializar(inv.Buscar(aBuscar));
                     break;
-
-
-
-
 
                 case "22":
                     Console.WriteLine("Ingrese el id del producto a buscar");
@@ -172,9 +149,11 @@ namespace Models
                     if (inv.AgregarNuevoProducto(producto) != null)
                     {
                         Console.WriteLine("Producto agregado satisfactoriamente");
-
                     }
-                    else Console.WriteLine("El inventario esta lleno, por favor, elimine un producto y vuelva a intentar");
+
+                    else
+                        Console.WriteLine("El inventario esta lleno, por favor, elimine un producto y vuelva a intentar");
+
                     break;
 
                 case "4":
@@ -186,43 +165,36 @@ namespace Models
                     if (int.TryParse(Select, out id))
                     {
                         inv.ModificarProducto(id, producto);
-
                     }
                     else
                     {
                         inv.ModificarProducto(Select, producto);
                     }
+
                     break;
 
                 case "5":
-
                     Console.WriteLine("Ingrese un id o un nombre del producto a eliminar");
 
                     Select = Console.ReadLine();
 
                     if (int.TryParse(Select, out id))
                     {
-                            
                         MenuController.Deserializar(inv.Buscar(id));
                         Console.WriteLine("¿Esta seguro que desea eliminar este producto? Y/N");
-
-
-
-
-
 
                         Select = Console.ReadLine();
                         if (Select == "Y")
                         {
                             inv.EliminarProducto(id);
                         }
-                        else break;
 
-
+                        else 
+                            break;
                     }
+
                     else
                     {
-                            
                         Console.WriteLine("¿Esta seguro que desea eliminar este producto? Y/N");
                         Deserializar(inv.Buscar(Select));
                         Select = Console.ReadLine();
@@ -230,17 +202,17 @@ namespace Models
                         {
                             inv.EliminarProducto(Select);
                         }
+
                         else break;
                     }
+
                     break;
 
                 case "61":
-                        
                     MenuController.Deserializar(Facturacion.ProductoQueMasFacturo(inv));
                     break;
 
                 case "62":
-                        
                     MenuController.DesserializarEnMasa(Facturacion.ProductosPorFacturacion(inv));
                     break;
 
@@ -264,16 +236,8 @@ namespace Models
                     Select = Console.ReadLine();
                     if (Select == "Y")
                         Environment.Exit(0);
-
                     break;
-
-
             }
-
-            
         }
-
-
-
     }
 }

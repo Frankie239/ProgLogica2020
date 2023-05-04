@@ -40,7 +40,7 @@ namespace ConstruccionesForm
         private void ClearTextbox()
         {
             TextboxId.Text = "";
-            TextBoxNombre.Text =  "";
+            TextBoxNombre.Text = "";
             textBoxCategoria.Text = "";
             textBoxPrecio.Text = "";
             textBoxStock.Text = "";
@@ -61,9 +61,9 @@ namespace ConstruccionesForm
 
 
         }
-     
 
-        
+
+
         /// <summary>
         /// Carga y ordena los productos por el coef. de facturacion
         /// </summary>
@@ -98,9 +98,9 @@ namespace ConstruccionesForm
             textBoxPrecio.Text = GridViewProductos.SelectedRows[0].Cells[3].Value.ToString();
             textBoxStock.Text = GridViewProductos.SelectedRows[0].Cells[4].Value.ToString();
             textBoxVendidos.Text = GridViewProductos.SelectedRows[0].Cells[5].Value.ToString();
-            labelFacturacion.Text = String.Format("${0}",GridViewProductos.SelectedRows[0].Cells[6].Value.ToString());
+            labelFacturacion.Text = String.Format("${0}", GridViewProductos.SelectedRows[0].Cells[6].Value.ToString());
             cargarThumbnail(id);
-           
+
 
 
         }
@@ -153,15 +153,15 @@ namespace ConstruccionesForm
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             try
             {
-                pictureBox.Load(ImagesDirectory+id+".jpg");
+                pictureBox.Load(ImagesDirectory + id + ".jpg");
                 //ictureBox.Image = Image.FromFile(string.Format(@"C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm));
-               // Image.FromFile(string.Format(@"\img\" + id + ".jpg"));
+                // Image.FromFile(string.Format(@"\img\" + id + ".jpg"));
             }
             catch (FileNotFoundException)
             {
                 pictureBox.Image = Image.FromFile(string.Format(@"C:\Users\Fran\source\repos\ProgLogica2020\ProgLogica202\ConstruccionesForm\img\notFound.jpg"));
             }
-            
+
         }
         private void ClearThumbnail()
         {
@@ -180,33 +180,27 @@ namespace ConstruccionesForm
                 return true;
         }
 
-
-    
-
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             bool flag = false;//Flag para saber si se pudo eliminar
-            if(!string.IsNullOrEmpty(TextboxId.Text)) //Si no esta vacio el textbox
+            if (!string.IsNullOrEmpty(TextboxId.Text)) //Si no esta vacio el textbox
             {
                 Producto prod = inventario.Buscar(int.Parse(TextboxId.Text));//busca por id
-                if(prod != null)
+                if (prod != null)
                 {
                     //Y si existe, lo borra
                     flag = inventario.EliminarProducto(int.Parse(TextboxId.Text));
                 }
-                
-
-                
             }
 
-            else if(!string.IsNullOrEmpty(TextBoxNombre.Text)) //Sino, busca el dato con un string, de la misma forma que el anterior
+            else if (!string.IsNullOrEmpty(TextBoxNombre.Text)) //Sino, busca el dato con un string, de la misma forma que el anterior
             {
-               flag = inventario.EliminarProducto(TextBoxNombre.Text);
+                flag = inventario.EliminarProducto(TextBoxNombre.Text);
             }
             else
             {
                 NoEncontrado();//Sino, muestra un error message
-                
+
             }
 
             if (flag)//SI salio bien, refresca
@@ -214,7 +208,7 @@ namespace ConstruccionesForm
                 CargarEnGrid(inventario.MostrarTodos());
             }
 
-               
+
 
         }
 
@@ -238,7 +232,7 @@ namespace ConstruccionesForm
                     //Refrescame la lista
                     CargarEnGrid(inventario.MostrarTodos());
                 }
-            
+
             }
             else
             {
@@ -247,7 +241,7 @@ namespace ConstruccionesForm
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result = MessageBox.Show(message, "Inventario lleno", buttons);
             }
-           
+
         }
 
         private void buttonModificar_Click(object sender, EventArgs e)
@@ -341,7 +335,7 @@ namespace ConstruccionesForm
                     FromObjectToTextbox(first);
                 }
                 else NoEncontrado();
-                
+
 
 
             }
@@ -375,11 +369,11 @@ namespace ConstruccionesForm
                 textBoxPrecio.Text = prod.Precio.ToString();
                 textBoxStock.Text = prod.StockActual.ToString();
                 textBoxVendidos.Text = prod.Vendidos.ToString();
-
             }
+
             else
                 NoEncontrado();
-            
+
         }
 
         /// <summary>

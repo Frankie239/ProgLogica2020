@@ -21,9 +21,8 @@ namespace Models
               Precio =80.00,
               StockActual = 120,
               Vendidos = 50
-
-
             },
+
             new Producto
             {
               Nombre = "Destornillador",
@@ -32,8 +31,8 @@ namespace Models
               Precio =95.00,
               StockActual = 124,
               Vendidos = 13
-
             },
+
             new Producto
             {
               Nombre = "Bombillas",
@@ -44,6 +43,7 @@ namespace Models
               Vendidos = 100
 
             },
+            
             new Producto
             {
               Nombre = "Caños de agua",
@@ -52,8 +52,8 @@ namespace Models
               Precio =100.00,
               StockActual = 0,
               Vendidos = 500
-
             },
+
             new Producto
             {
               Nombre = "Pinza",
@@ -62,8 +62,8 @@ namespace Models
               Precio =135.00,
               StockActual = 80,
               Vendidos = 25
-
             },
+
             new Producto
             {
               Nombre = "Flexible Caño",
@@ -112,8 +112,7 @@ namespace Models
               Precio =50.00,
               StockActual = 98,
               Vendidos = 30
-            }
-
+            },
         };
 
         public Inventario()
@@ -133,12 +132,7 @@ namespace Models
             foreach (Producto prod in Productos)
             {
                 if (prod.Categoria == Categoria)
-                {
                     productos.Add(prod);
-
-                }
-
-
             }
 
             return productos;
@@ -158,14 +152,10 @@ namespace Models
                 case 'A':
 
                     Encontrados = Buscar(0, int.MaxValue);
-
-
-
                     break;
 
                 case 'B':
                     Encontrados = Buscar(0, 100);
-
                     break;
 
                 case 'C':
@@ -173,7 +163,6 @@ namespace Models
                     break;
 
                 default:
-
                     break;
             }
             SortByStock(Encontrados);
@@ -182,20 +171,18 @@ namespace Models
 
         public Producto ProductoMasVendido()
         {
-            //Pa refactoring
             List<Producto> encontrados = Productos;
             encontrados.Sort((x, y) => x.Vendidos.CompareTo(y.Vendidos));
             return encontrados[encontrados.Count - 1];
-
         }
 
         public Producto ProductoMasCaro()
         {
-            //Pa refactoring
             List<Producto> encontrados = Productos;
             encontrados.Sort((x, y) => x.Precio.CompareTo(y.Precio));
             return encontrados[encontrados.Count - 1];
         }
+
         /// <summary>
         /// Agrega un producto si la cantidad de productos del stock es menor a la cantidad de productos maximos
         /// </summary>
@@ -219,7 +206,6 @@ namespace Models
             }
 
             else return null;
-
         }
 
         /// <summary>
@@ -234,6 +220,7 @@ namespace Models
 
             return SeekDestroyAndAdd(encontrado, aModificar);
         }
+
         /// <summary>
         /// Modifica un producto a traves de su id
         /// </summary>
@@ -277,8 +264,6 @@ namespace Models
                 return true;
 
             else return false;
-
-
         }
 
 
@@ -299,8 +284,6 @@ namespace Models
             }
 
             return encontrados;
-
-
         }
         /// <summary>
         /// Busca un producto por su id
@@ -314,6 +297,7 @@ namespace Models
                 if (prod.IdProducto == id)
                     return prod;
             }
+
             return null;
         }
         /// <summary>
@@ -329,6 +313,7 @@ namespace Models
                 if (prod.Nombre == nombre)
                     return prod;
             }
+
             return null;
         }
         /// <summary>
@@ -358,6 +343,7 @@ namespace Models
                 Productos.Add(aModificar);
                 return aModificar;
             }
+            
             else
                 return null;
         }

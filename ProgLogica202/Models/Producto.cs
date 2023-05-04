@@ -12,15 +12,10 @@ namespace Models
         public double Precio;
         public int StockActual;
         public int Vendidos;
-        
-       
-       public double Facturacion
-       {
+
+        public double Facturacion
+        {
             get { return Precio * Vendidos; }
-       }
-
-       
-
-
+        }
     }
 }
